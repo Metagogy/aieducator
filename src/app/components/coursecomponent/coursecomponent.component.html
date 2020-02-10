@@ -1,0 +1,50 @@
+<section class="coursecomponenet">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4" *ngFor="let course of data">
+        <div class="card rounded">
+          <div class="view">
+            <img class="card-img-top rounded-0" src="{{course.imageUrl}}" height="250px" alt="Card image cap">
+          </div>
+          <div class="card-body" style="background-color: #fff;">
+            <h3 style="font-weight: bold;" class="mt-1 mx-auto">{{course.name}}</h3>
+          <div class="">
+            <p style="font-size: 17px;">
+              {{course.description}}
+            </p>
+            <span>
+              <i class="fas fa-clock" style="font-size: 22px"></i>
+              <span class="ml-2" style="font-size:20px;font-weight: 600;">{{course.duration}}</span>
+            </span>
+            <div class="container mt-2">
+              <div class="row">
+                <div class="col-sm-6">
+                  <span>
+                    <!-- <i class="fas fa-rupee-sign m-0" style="font-size: 23px;"></i> -->
+                    <span class="" style="font-size:20px;font-weight: 600;">₹{{course.amount}}</span>
+                  </span>
+                </div>
+                <div class="col-sm-6" *ngIf="course.discount!=0">
+                  <div class="row">
+                    <span class=""
+                      style="font-size:15px;font-weight: 600;text-decoration: line-through;">₹{{course.discount}}</span>
+                  </div>
+                  <div class="row" style="font-size: 15px;font-weight: 600;">
+                    {{course.discountPercent}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          <div class="form-group mx-auto">
+            <a type="button" (click)="onSelect(course)">
+              <button type="submit" class="btn btn-primary btn-block"> View Details  </button>
+            </a>
+          </div>
+          <!-- <button type="button" class="btn btn-primary btn-lg btn-block mt-2 mb-2">Vew Details</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

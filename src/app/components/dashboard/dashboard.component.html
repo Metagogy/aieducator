@@ -1,0 +1,161 @@
+<script src="https://code.highcharts.com/highcharts.src.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+
+
+<section class="section bg_2 p-0 pt-2 pb-2 pl-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h4 class="h2 ml-5 text-white"><img width="100" height="100" src="../../../assets/images/avatar.jpg"
+            class="rounded-circle " /><span class="ml-5">Hi
+            <!-- {{request.user.username}},  -->
+            Welcome back.</span>
+          <a href="/profile" class="btn profile-btn btn-sm btn-info-outline"><b><u>Profile</u></b></a></h4>
+      </div>
+      <div class="col-md-3 row" style="color: #020c4d;">
+        <div class="col-md-4 h5  text-center mt-3">
+          <!-- {{regCourses.count}} -->
+          3
+          <br>
+          Courses
+        </div>
+        <div class="col-md-4 h5  text-center mt-3">
+          <!-- {{rewards}} -->
+          15
+          <br>
+          Rewards
+        </div>
+        <div class="col-md-4 h5  text-center mt-3">
+          1
+          <br>
+          Badges
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2 class="text-secondary m-2"><b>ML Bootcamp</b></h2>
+  <hr>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <!-- <figure class="highcharts-figure">
+          <div id="gauge01"></div>
+        </figure> -->
+        <!-- <div class='col-md-4 col-xs-6 col-sm-6'> -->
+          <div id='angleGauge' ></div>
+        <!-- </div> -->
+
+      </div>
+      <div class="col-md-8 ml-5">
+        <div class="row">
+          <div class="col-md-10" style=" margin-top: auto;margin-bottom: auto;">
+            <div class="progress" style="width: 100%; border-radius: 30px;">
+              <div class="progress-bar" style="width:50%">50%</div>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <button class="btn" type="button" style="background-color: rgb(0, 68, 255);color: white;">Start</button>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-4 ">
+            <div class="card card-body justify-content-center"
+              style="background-color: rgb(0, 5, 36);color: white;text-align: center;height: 150px;margin-top: 40px;">
+              Rewards 10
+            </div>
+          </div>
+          <div class="col-md-4 ">
+            <div class="card card-body justify-content-center"
+              style="background-color: rgb(0, 5, 36);color: white;text-align: center;height: 150px;margin-top: 40px;">
+              Projects 1
+            </div>
+          </div>
+          <div class="col-md-4 ">
+            <div class="card card-body justify-content-center"
+              style="background-color: rgb(0, 5, 36);color: white;text-align: center;height: 150px;margin-top: 40px;">
+              Quizzes 17
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<hr>
+
+<!-- <figure class="highcharts-figure">
+  <div id="container"></div>
+</figure> -->
+
+<div class=" col-md-12">
+  <!-- <figure class="highcharts-figure"> -->
+    <div id="container"></div>
+  <!-- </figure> -->
+</div>
+<hr>
+
+<div class=" col-md-12">
+  <!-- <figure class="highcharts-figure"> -->
+    <div id="container1"></div>
+  <!-- </figure> -->
+</div>
+<hr>
+
+<!-- integration code -->
+
+<!-- <div class='col-sm-12 col-md-12 col-lg-12'>
+  <h2 class='text-secondary m-2' id='name'>"+ arrayItem.name +"</h2>
+  <hr>
+  <div class='row'>
+    <div class='col-md-4 col-xs-6 col-sm-6'>
+      <div id='angleGauge' style='height: 250px'></div>
+    </div>
+    <div class='row col-lg-8 col-md-8 col-sm-12' style='font-size:0.75rem '>
+      <div class='col-lg-8 col-md-12'>Progress
+        <div class='progress'>
+          <div class='progress-bar' role='progressbar' style='width:"+arrayItem.percent+"'aria-valuenow='"+arrayItem.percent+"%' aria-valuemin='0' aria-valuemax='100'>"+arrayItem.percent+"%
+          </div>
+        </div>
+      </div>
+      <div class='col-lg-4 col-md-4 col-xs-1 col-sm-1 mt-2'>
+        <a href='"+arrayItem.last_urls[arrayItem.name]+"' class='btn btn-primary btn-sm'>Start <i
+            class='fas fa-arrow-right'></i></a>
+      </div>
+      <div class='col-md-4 col-xs-6 col-sm-6 card-body card-sm'>
+        <div class='text-center bg-primary-3 text-white card-body card'>Rewards<span
+            class='text-white'>"+arrayItem.rewards +"</span>
+        </div>
+      </div>
+      <div class='col-md-4 col-xs-6 col-sm-6 card-body card-sm'>
+        <div class='text-center bg-primary-3 text-white card-body card'>Projects<span class='text-white'>0</span>
+        </div>
+      </div>
+      <div class='col-md-4 col-xs-6 col-sm-6 card-body card-sm'>
+        <div class='text-center bg-primary-3 text-white card-body card'>Quizzes<span
+            class='text-white'>"+arrayItem.quizes+"/"+arrayItem.topics+"</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id='activeCourseMCQ"+index+"' class='border rounded shadow-3d'></div>
+  <!-- <hr>
+  <div id='activeCoursePS"+index+"' class='border rounded shadow-3d mt-3'></div>
+<!-- </div> 
+</div> -->
+
+<!-- <figure class="highcharts-figure">
+    <div id="container2"></div>
+    <p class="highcharts-description">
+        A basic column chart compares rainfall values between four cities.
+        Tokyo has the overall highest amount of rainfall, followed by New York.
+        The chart is making use of the axis crosshair feature, to highlight
+        months as they are hovered over.
+    </p>
+</figure> -->

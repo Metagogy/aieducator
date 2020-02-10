@@ -1,0 +1,24 @@
+span{
+    margin: 10px;
+}
+.back{
+    background-color: #29303B;
+    /* margin-bottom: 20px; */
+}
+.cardd{
+    position: absolute;
+}
+
+.text-size{
+    font-size: 12px;
+    font-weight: 600;
+}
+
+@media screen and (max-width: 720px) {
+    .cardd {
+        position: relative;
+        width: 100%;
+        margin-top: 10px;
+      /* background-color: blue; */
+    }
+}

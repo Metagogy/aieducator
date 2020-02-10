@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+
+/* Application Theme colors -
+ #ffc107 --  yellow
+ #E67823 -- orange
+#585550 --  light gray
+#324041 -- Dark gray/ dark blue
+#3755be--  blue
+#000000 -- black*/
+body{
+    padding:0;
+    margin: 0;
+}
