@@ -27,6 +27,10 @@ import { ChartsModule } from 'ng2-charts';
 import { ChartModule, HIGHCHARTS_MODULES } from 'angular-highcharts';
 import * as more from 'highcharts/highcharts-more.src';
 import * as exporting from 'highcharts/modules/exporting.src';
+import { AuthenticationServiceService } from './authentication-service.service'
+import { DataServiceService } from './data-service.service';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -58,9 +62,12 @@ import * as exporting from 'highcharts/modules/exporting.src';
     HighchartsChartModule,
     GaugeChartModule,
     ChartsModule,
-    ChartModule
+    ChartModule,
+    HttpClientModule
   ],
   providers: [
+    AuthenticationServiceService,
+    DataServiceService,
     { provide: HIGHCHARTS_MODULES, useFactory: () => [ more, exporting ] } // add as factory to your providers
   ],
   bootstrap: [AppComponent]
