@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
+import { DataServiceService } from 'src/app/data-service.service';
+import { HttpClient } from '@angular/common/http';
+import { JsonPipe } from '@angular/common';
 
 
 @Component({
@@ -10,53 +13,23 @@ import {Router} from '@angular/router';
 })
 export class CoursecomponentComponent implements OnInit {
 
-  data: any;
+  courses: any;
+  isActive: boolean;
+  
 
-  constructor(private router:Router) { }
+  constructor(private router: Router, private service: DataServiceService, private http: HttpClient) { }
 
   ngOnInit() {
-
-    this.data = [
-      {
-        id: '1',
-        name: 'ML Bootcamp',
-        description: 'A landing for shared workspaces with date picker functionality.',
-        duration: '4 days',
-        amount: '6000',
-        discount: '0',
-        discountPercent: '24% off',
-        imageUrl: '/assets/images/mnist.png',
-        
-      },
-      {
-        id: '2',
-        name: 'Machine Learning',
-        description: 'A landing for shared workspaces with date picker functionality.',
-        duration: '60 days',
-        amount: '10000',
-        discount: '0',
-        discountPercent: '24% off',
-        imageUrl: '/assets/images/ML.png',
-        
-      },
-      {
-        id: '3',
-        name: 'Cloud computing',
-        description: 'A landing for shared workspaces with date picker functionality.',
-        duration: '60 days',
-        amount: '8000',
-        discount: '0',
-        discountPercent: '24% off',
-        imageUrl: '/assets/images/PythonWithDjango.png',
-        
-      }
-    ];
+      
+    this.service.fetchCourses().subscribe(res=>{
+      this.courses=res.courses;
+      console.log(this.courses)
+    });
 
   }
 
-  onSelect(course:any)
-  {
-    this.router.navigate(['coursedetails',course.id])
+  onSelect(course: any) {
+    this.router.navigate(['coursedetails', course.id])
     // console.log("The button id that is selected is "+course.id)
   }
 

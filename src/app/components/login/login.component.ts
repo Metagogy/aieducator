@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationServiceService } from 'src/app/authentication-service.service';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private Auth: AuthenticationServiceService) { }
 
   ngOnInit() {
+
   }
 
+  login(form) {
+    alert('Your Username :' + form.value.email + '\n Password is :' + form.value.password);
+    console.log(form.value);  // { first: '', last: '' }
+    console.log(form.valid);  // false
+    // localStorage.setItem('Username' , form.value.email);
+    // localStorage.setItem('Password' , form.value.password);
+    this.Auth.saveLoginInfo(form.value.email, form.value.password);
+  }
 }

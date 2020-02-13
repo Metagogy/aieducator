@@ -30,6 +30,10 @@ import * as exporting from 'highcharts/modules/exporting.src';
 import { AuthenticationServiceService } from './authentication-service.service'
 import { DataServiceService } from './data-service.service';
 import { HttpClientModule } from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { McqComponent } from './components/mcq/mcq.component';
+import { AssighnmentsComponent } from './components/assighnments/assighnments.component';
+import { CartComponent } from './components/cart/cart.component';
 
 
 @NgModule({
@@ -53,7 +57,10 @@ import { HttpClientModule } from '@angular/common/http';
     RegisterComponent,
     CoursedetailsmobileComponent,
     ProfileComponent,
-    DashboardComponent
+    DashboardComponent,
+    McqComponent,
+    AssighnmentsComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +70,9 @@ import { HttpClientModule } from '@angular/common/http';
     GaugeChartModule,
     ChartsModule,
     ChartModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     AuthenticationServiceService,

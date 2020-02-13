@@ -7,20 +7,20 @@
         <div class="row">
           <div class="col-md-6">
             <div class="pl-md-5">
-              <img src="assets/img/Logo.png" height="300px" width="600px">
+              <img src="assets/img/Logo.png" height="100px" width="200px">
                 <div class="mb-4">
                     <h2>
                         Platform that makes learning Simple.
                     </h2>
                 </div>
-                <a href="./courses.html" class="btn btn-lg btn-white">Explore Courses</a>
+                <a routerLink="/course" class="btn btn-lg btn-white">Explore Courses</a>
                 <!-- {% if request.user.is_anonymous %}-->
-                <a href="./register" class="btn btn-lg btn-wh mx-1 btn-danger">Register Now</a>
+                <a routerLink="/register" class="btn btn-lg btn-wh mx-1 btn-danger">Register Now</a>
             </div>
           </div>
           <div class="col-md-6">
             <div class="card bg-warning shadow border-0">
-              <img src="assets/img/homebg.jpg" style="height: 500px; width: 1000px;" alt="image is not able to display" class="card-img shadow-3d hover-shadow-3d">
+              <img src="assets/img/homebg.jpg"  alt="image is not able to display" class="card-img shadow-3d hover-shadow-3d">
             </div>
           </div>
         </div> 
@@ -221,7 +221,7 @@
               Assignments so that the learner is always in his zone of proximal development(ZPD). In this zone, learner
               feels confident and will be highly productive which in turn makes programming fun and improves learning
               rate.</p>
-            <a href="/courses" class="btn btn-primary">Get Started</a>
+            <a routerLink="/login" class="btn btn-primary">Get Started</a>
           </div>
         </div>
       </div>
@@ -237,7 +237,7 @@
             <p class="lead text-white">Our algorithms also calibrate the assignments so that the learner has to make efforts to solve
               them. Since every individual’s problem solving capabilities are different, and even an individual’s
               capability rapidly improves with our system, our calibrated assignments continue to challenge him/her.</p>
-            <a href="/courses" class="font-weight-bold btn btn-warning mt-5">Get Started</a>
+            <a routerLink="login" class="font-weight-bold btn btn-warning mt-5">Get Started</a>
           </div>
         </div>
         <div class="col-md-6">
@@ -274,7 +274,7 @@
                   classroom learning.</p>
               </li>
             </ul>
-            <a href="/courses" class="font-weight-bold btn btn-success mt-5">Get Started</a>
+            <a routerLink="/login" class="font-weight-bold btn btn-success mt-5">Get Started</a>
           </div>
         </div>
       </div>
@@ -289,7 +289,7 @@
             <h3>Maximize Rate of Learning</h3>
             <p class="lead">Using ML based accurate predictions, indicate root cause analysis of lower learning rates, and
               indicates time required to reach an expert benchmark.</p>
-            <a href="/courses" class="font-weight-bold btn btn-primary mt-5">Get Started</a>
+            <a routerLink="/login" class="font-weight-bold btn btn-primary mt-5">Get Started</a>
           </div>
         </div>
         <div class="col-md-6">
@@ -474,11 +474,11 @@
                   <div class="row" style="margin-top: 5px;">
                       <div class="col-md-12 text-center">
                           <!-- <div style="position: relative;"> -->
-                          <button class="btn btn-primary btn-lg" type="button"><a routerLink="coursedetails" [state]="{data: {courseId: 1}}" style="text-decoration: none;color: white;" >Know More</a></button>
+                          <button class="btn btn-primary btn-lg" type="button"><a routerLink="/course" [state]="{data: {courseId: 1}}" style="text-decoration: none;color: white;" >Know More</a></button>
                       <!-- </div>
                       <div class="col-md-12"> -->
                         <!-- <div style="position: relative;"> -->
-                        <button class="btn btn-lg btn-wh mx-1 btn-danger" type="button" ><a href="#" style="text-decoration: none;color: white;">Add To Cart</a></button>
+                        <button class="btn btn-lg btn-wh mx-1 btn-danger" type="button" ><a routerLink="/login" style="text-decoration: none;color: white;">Add To Cart</a></button>
                       </div>
                   </div>
               </div>
@@ -646,10 +646,10 @@
         <div class="card card-body border-0 o-hidden mb-0 text-light bg_2">
           <div class="position-relative d-flex flex-column flex-md-row justify-content-between align-items-center">
             <div class="h3 text-center mb-md-0 text-dark">Start building beautiful career</div>
-            <a href="/login" class="btn btn-lg btn-white">
+            <a routerLink="/login" class="btn btn-lg btn-white">
               Start Now
             </a>
-          </div>
+          </div> 
           <div class="decoration layer-0">
             <img class="bg-primary-2" src="" alt="deco-blob-1 decoration" data-inject-svg="">
           </div>
