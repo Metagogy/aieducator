@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataServiceService } from 'src/app/data-service.service';
 import { HttpClient} from '@angular/common/http';
-import { JsonPipe } from '@angular/common';
 import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
