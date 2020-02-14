@@ -19,8 +19,8 @@ export class AuthenticationServiceService {
 
   register(userData) {
 
-    console.log("user data", userData);
-    return this.http.post('http://192.168.0.114:9000/' + 'register_serializer/', {username:'priyanka', email:'pu211patil@gmail.com', password:'12345678'});
+    console.log("user data",userData);
+    return this.http.post('http://192.168.0.114:8000/' + 'register_serializer/', userData);
   }
 
 }
