@@ -1,0 +1,38 @@
+<div class="ml-5 test mb-5">
+    <h3 class="mb-0 mb-3 mt-3 ml-2 ">{{name}}</h3>
+    <form action="/Testvalidate/{{count}}" method="post" enctype="multipart/form-data" >
+        <!-- {% csrf_token %} -->
+        <input type="hidden" name="questionid" id="questionid" value="{{questions.id}}">
+        <input type="hidden" name="totalcount" value="{{totalcount}}">
+        <input type="hidden" name="next" value="{{next}}">
+        <input type="hidden" name="previous" value="{{previous}}">
+        <input type="hidden" name="timegiven" id= "timegiven" value="{{questions.timegiven}}">
+        <div class="card card-body shadow-3d">
+                <div class="row bg-info p-2 rounded text-white">
+                    <div class="col-md-10">
+                        Q. Single Choice Question
+                    </div>
+                    <div class="col-md-2">
+                        <h2><i class="far fa-clock"></i>&nbsp;<span id="time">0(sec)</span></h2>
+                    </div>
+                </div>
+                <pre>
+                    <p class="lead"><pre>{{questions.question}}</pre>
+                </pre>
+                <ul class="list-group mb-5">
+                <!-- {% for a in questions.answers %} -->
+                    <li class="list-group-item">
+                        <div class="custom-radio" >
+                        <div class="custom-control custom-radio">
+                           <input type="radio" class="custom-control-input" value={{a.id}} name="answer" id="{{a.id}}" required="">
+                           <label class="custom-control-label" for="{{a.id}}"><span><pre>{{a.ans}}</pre></span></label>
+                        </div>
+                        </div>
+                    </li>
+                <!-- {% endfor %} -->
+                </ul>
+                <input type="hidden" name="timeTaken" value="" id="timeTaken" />
+                <button type="submit" id="TimeButton" value = "Submit Answer" class="btn btn-primary">Submit Answer</button>
+        </div>
+    </form>
+</div>
