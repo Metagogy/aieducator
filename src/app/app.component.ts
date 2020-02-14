@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as AOS from 'aos';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,18 @@ import * as AOS from 'aos';
 
 export class AppComponent implements OnInit{
   title = 'metagogyai';
+  isLogin = false;
+
+  constructor(private router: Router){
+    if(localStorage.getItem('isLogin') == 'true'){
+      this.isLogin = true;
+      this.router.navigateByUrl('/login_home');
+    }else{
+      this.isLogin = false;
+      this.router.navigateByUrl('/home');
+    }
+  }
+
   ngOnInit(){
     AOS.init();
   }

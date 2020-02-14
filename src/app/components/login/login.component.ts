@@ -40,4 +40,12 @@ export class LoginComponent implements OnInit {
     );
   }
 
+  // login(form) {
+  //   alert('Your Username :' + form.value.email + '\n Password is :' + form.value.password);
+  //   console.log(form.value);  // { first: '', last: '' }
+  //   console.log(form.valid);  // false
+  //   // localStorage.setItem('Username' , form.value.email);
+  //   // localStorage.setItem('Password' , form.value.password);
+  //   this.Auth.saveLoginInfo(form.value.email, form.value.password);
+  // }
 }
