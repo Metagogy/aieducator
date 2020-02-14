@@ -2,11 +2,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {ContactusComponent} from './components/contactus/contactus.component';
 import {HomecomponentComponent} from './components/homecomponent/homecomponent.component';
-
 import { CoursecomponentComponent } from './components/coursecomponent/coursecomponent.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
-import { EventsComponent } from './components/events/events.component';
-import { TecharticlesComponent } from './components/techarticles/techarticles.component';
+import {TestandtopicComponent} from './components/testandtopic/testandtopic.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import {SinglecourseComponent} from './components/singlecourse/singlecourse.component';
@@ -28,8 +26,6 @@ const routes: Routes = [
   {path: 'aboutus', component: AboutusComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'course', component: CoursecomponentComponent},
-  {path: 'event', component: EventsComponent},
-  {path: 'techArticles', component: TecharticlesComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'scourse', component: SinglecourseComponent},
@@ -37,6 +33,7 @@ const routes: Routes = [
   {path: 'coursedetails/:id', component: CoursedetailslaptopComponent},
   {path: 'coursecatalog', component: CoursecatalogComponent},
   {path: 'dashboard', component: DashboardComponent},
+  {path: 'testandtopic',component: TestandtopicComponent},
   {path: 'assignments', component: AssighnmentsComponent},
   {path: 'mcq', component: McqComponent},
   {path: 'cart', component: CartComponent},
@@ -48,4 +45,4 @@ const routes: Routes = [
 })
 
 export class AppRoutingModule { }
-export const routingComponents = [ContactusComponent, HomecomponentComponent, AboutusComponent, CoursecomponentComponent, EventsComponent, TecharticlesComponent, LoginComponent, RegisterComponent, SinglecourseComponent, McqsectionComponent]
+export const routingComponents = [ContactusComponent, HomecomponentComponent, AboutusComponent, CoursecomponentComponent, LoginComponent, RegisterComponent, SinglecourseComponent, McqsectionComponent,TestandtopicComponent]
