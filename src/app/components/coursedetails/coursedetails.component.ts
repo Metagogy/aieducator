@@ -1,18 +1,15 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import {CoursedetailslaptopComponent} from '../coursedetailslaptop/coursedetailslaptop.component';
-import {CoursedetailsmobileComponent} from '../coursedetailsmobile/coursedetailsmobile.component';
 
 @Component({
   selector: 'app-coursedetails',
   templateUrl: './coursedetails.component.html',
   styleUrls: ['./coursedetails.component.css']
 })
+
 export class CoursedetailsComponent implements OnInit {
-
   public innerWidth: any;
-
   data:any;
-
   constructor() { }
 
   @HostListener('window:resize', ['$event'])
@@ -22,9 +19,9 @@ export class CoursedetailsComponent implements OnInit {
   console.log(this.innerWidth);
 }
 
-  ngOnInit() {
-      
+  ngOnInit() {      
       this.innerWidth = window.innerWidth;
       console.log(history.state.data);
     }
+
 }
