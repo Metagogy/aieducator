@@ -1,3 +1,10 @@
+<ngx-spinner><p style="color:white">Loading...</p></ngx-spinner>
+
+<section *ngIf="errorStatus; else elseBlock">
+  <p>Something Went Wrong</p>
+</section>
+
+<ng-template #elseBlock>
 <section class="course-detail mt-5">
   <div class="container">
     <div class="row">
@@ -379,6 +386,7 @@
     </div>
   </div>
 </section>
+</ng-template>
 
 <script>
   function toggleIcon(e) {

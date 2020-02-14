@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataServiceService } from 'src/app/data-service.service';
 import { HttpClient } from '@angular/common/http';
-
+import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   selector: 'app-coursedetailslaptop',
@@ -14,18 +14,28 @@ export class CoursedetailslaptopComponent implements OnInit {
   id: any;
   data1: any;
   chapters:any;
+  errorStatus:boolean;
+  errorMessage:any;
 
-  constructor(private route: ActivatedRoute, private service: DataServiceService, private http: HttpClient) { }
+  constructor(private route: ActivatedRoute, private service: DataServiceService, private http: HttpClient,private spinner:NgxSpinnerService) { }
 
   ngOnInit() {
+    this.spinner.show();
 
     this.id = this.route.snapshot.paramMap.get('id');
 
     this.data = this.service.getCoursesData(this.id).subscribe(data => {
-      this.data = data.course;
-      this.chapters = data.course.chapters;
+      this.data = data["course"];
+      this.chapters = this.data["chapters"];
       console.log('url output =', this.data);
       console.log('chapter output =', this.chapters);
+      this.spinner.hide();
+      this.errorStatus=false;
+    },error=>{
+      this.errorStatus=true;
+      this.errorMessage=error.message;
+      console.log("Error has been occured");
+      this.spinner.hide();
     });
     
 

@@ -12,7 +12,7 @@ import { first } from 'rxjs/operators';
 })
 export class DashboardComponent implements OnInit {
 
-    arrayItem:any;
+    arrayItem: any;
     progress;
     quizes;
     rewards;
@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
         this.service.fetchDashboardData().pipe(first())
             .subscribe(
                 res => {
-                  this.arrayItem =  console.log(JSON.stringify(res));
+                    this.arrayItem = console.log(JSON.stringify(res));
                     this.rewards = this.arrayItem.final_test_data.rewards;
                     this.quizes = this.arrayItem.final_test_data.quizes;
                     this.progress = this.arrayItem.final_test_data.percent;
@@ -190,7 +190,7 @@ export class DashboardComponent implements OnInit {
                             data: this.arrayItem.final_assignment_data.user1.time,
                             pointPadding: 0.4,
                             pointPlacement: -0.2
-                        },{
+                        }, {
                             type: 'column',
                             name: this.arrayItem.final_assignment_data.user2.name,
                             color: 'blue',
@@ -204,7 +204,7 @@ export class DashboardComponent implements OnInit {
                             data: this.arrayItem.final_assignment_data.user2.time,
                             pointPadding: 0.4,
                             pointPlacement: -0.2
-                        },{
+                        }, {
                             type: 'column',
                             name: this.arrayItem.final_assignment_data.user3.name,
                             color: 'green',
@@ -213,12 +213,12 @@ export class DashboardComponent implements OnInit {
                             pointPlacement: -0.2
                         }, {
                             type: 'column',
-                            name: "timetaken by "+this.arrayItem.final_assignment_data.user3.name,
+                            name: "timetaken by " + this.arrayItem.final_assignment_data.user3.name,
                             color: 'rgba(126,86,134,.9)',
                             data: this.arrayItem.final_assignment_data.user3.time,
                             pointPadding: 0.4,
                             pointPlacement: -0.2
-                        },{
+                        }, {
                             type: 'column',
                             name: this.arrayItem.final_assignment_data.user4.name,
                             color: 'black',
@@ -227,12 +227,12 @@ export class DashboardComponent implements OnInit {
                             pointPlacement: -0.2
                         }, {
                             type: 'column',
-                            name: "timetaken by "+this.arrayItem.final_assignment_data.user4.name,
+                            name: "timetaken by " + this.arrayItem.final_assignment_data.user4.name,
                             color: 'rgba(126,86,134,.9)',
                             data: this.arrayItem.final_assignment_data.user4.time,
                             pointPadding: 0.4,
                             pointPlacement: -0.2
-                        },{
+                        }, {
                             type: 'column',
                             name: this.arrayItem.final_assignment_data.user5.name,
                             color: 'yellow',
@@ -241,7 +241,7 @@ export class DashboardComponent implements OnInit {
                             pointPlacement: -0.2
                         }, {
                             type: 'column',
-                            name: "timetaken by "+this.arrayItem.final_assignment_data.user5.name,
+                            name: "timetaken by " + this.arrayItem.final_assignment_data.user5.name,
                             color: 'rgba(126,86,134,.9)',
                             data: this.arrayItem.final_assignment_data.user5.time,
                             pointPadding: 0.4,
@@ -460,126 +460,113 @@ export class DashboardComponent implements OnInit {
                 error => {
                     alert(" error :" + error.message);
                 });
-
-
-
-        // Highcharts.chart('container', {
-
-        //     chart: {
-        //         renderTo: 'gauge',
-        //         type: 'gauge',
-        //         plotBackgroundColor: null,
-        //         plotBackgroundImage: null,
-        //         plotBorderWidth: 0,
-        //         plotShadow: false
-        //     },
-
-        //     title: {
-        //         text: ''
-        //     },
-
-        //     pane: {
-        //         startAngle: -150,
-        //         endAngle: 150,
-        //         background: [{
-        //             backgroundColor: {
-        //                 linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
-        //                 stops: [
-        //                     [0, '#FFF'],
-        //                     [1, '#333']
-        //                 ]
-        //             },
-        //             borderWidth: 0,
-        //             outerRadius: '109%'
-        //         }, {
-        //             backgroundColor: {
-        //                 linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
-        //                 stops: [
-        //                     [0, '#333'],
-        //                     [1, '#FFF']
-        //                 ]
-        //             },
-        //             borderWidth: 1,
-        //             outerRadius: '107%'
-        //         }, {
-        //             // default background
-        //         }, {
-        //             backgroundColor: '#DDD',
-        //             borderWidth: 0,
-        //             outerRadius: '105%',
-        //             innerRadius: '103%'
-        //         }]
-        //     },
-
-        //     // the value axis
-        //     yAxis: {
-        //         min: 0,
-        //         max: 200,
-
-        //         minorTickInterval: 'auto',
-        //         minorTickWidth: 1,
-        //         minorTickLength: 10,
-        //         minorTickPosition: 'inside',
-        //         minorTickColor: '#666',
-
-        //         tickPixelInterval: 30,
-        //         tickWidth: 2,
-        //         tickPosition: 'inside',
-        //         tickLength: 10,
-        //         tickColor: '#666',
-        //         labels: {
-        //             step: 2,
-        //             rotation: 10
-        //         },
-        //         title: {
-        //             text: 'km/h'
-        //         },
-        //         plotBands: [{
-        //             from: 0,
-        //             to: 120,
-        //             color: '#55BF3B' // green
-        //         }, {
-        //             from: 120,
-        //             to: 160,
-        //             color: '#DDDF0D' // yellow
-        //         }, {
-        //             from: 160,
-        //             to: 200,
-        //             color: '#DF5353' // red
-        //         }]
-        //     },
-
-        //     series: [{
-        //         type: 'gauge',
-        //         name: 'Speed',
-        //         data: [80],
-        //         tooltip: {
-        //             valueSuffix: ' km/h'
-        //         }
-        //     }]
-
-        // },
-        //     // Add some life
-        //     function (chart) {
-        //         if (!chart.renderer) {
-        //             setInterval(function () {
-        //                 var point = chart.series[0].points[0],
-        //                     newVal,
-        //                     inc = Math.round((Math.random() - 0.5) * 20);
-
-        //                 newVal = point.y + inc;
-        //                 if (newVal < 0 || newVal > 200) {
-        //                     newVal = point.y - inc;
-        //                 }
-
-        //                 point.update(newVal);
-
-        //             }, 3000);
-        //         }
-        //     });
-
-
     }
+
+
+
+    // integration guage chart
+
+    //     Highcharts.chart({
+
+    //         chart: {
+    //             renderTo: 'angleGauge',
+    //             type: 'gauge',
+    //             plotBackgroundColor: null,
+    //             plotBackgroundImage: null,
+    //             plotBorderWidth: 0,
+    //             plotShadow: false
+    //         },
+
+    //         title: {
+    //             text: 'Angle'
+    //         },
+
+    //         pane: {
+    //             startAngle: -150,
+    //             endAngle: 150,
+    //             background: [{
+    //                 backgroundColor: {
+    //                     linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+    //                     stops: [
+    //                         [0, '#FFF'],
+    //                         [1, '#333']
+    //                     ]
+    //                 },
+    //                 borderWidth: 0,
+    //                 outerRadius: '109%'
+    //             }, {
+    //                 backgroundColor: {
+    //                     linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+    //                     stops: [
+    //                         [0, '#333'],
+    //                         [1, '#FFF']
+    //                     ]
+    //                 },
+    //                 borderWidth: 2,
+    //                 outerRadius: '107%'
+    //             }, {
+    //                 // default background
+    //             }, {
+    //                 backgroundColor: '#DDD',
+    //                 borderWidth: 0,
+    //                 outerRadius: '105%',
+    //                 innerRadius: '103%'
+    //             }]
+    //         },
+
+    //         // the value axis
+    //         yAxis: {
+    //             min: -90,
+    //             max: 90,
+    //             minorTickInterval: 'auto',
+    //             minorTickWidth: 1,
+    //             minorTickLength: 10,
+    //             minorTickPosition: 'inside',
+    //             minorTickColor: '#666',
+    //             tickPixelInterval: 10,
+    //             tickWidth: 2,
+    //             tickPosition: 'inside',
+    //             tickLength: 10,
+    //             tickColor: '#666',
+    //             labels: {
+    //                 step: 2,
+    //                 rotation: 1
+    //             },
+    //             title: {
+    //                 text: 'degrees'
+    //             },
+    //             plotBands:
+    //                 [{
+    //                     innerRadius: '50%',
+    //                     outerRadius: '100%'
+    //                 }, {
+    //                     from: 30,
+    //                     to: 90,
+    //                     color: '#DF5353' // green
+    //                 }, {
+    //                     from: -30,
+    //                     to: 30,
+    //                     color: 'green' // green
+    //                 }, {
+    //                     from: -90,
+    //                     to: -30,
+    //                     color: '#DF5353' // red
+    //                 }]
+    //         },
+
+    //         series: [{
+    //             type: 'gauge',
+    //             name: 'Speed',
+    //             data: [0],
+    //             tooltip: {
+    //                 valueSuffix: ' o degrees'
+    //             }
+    //         }]
+
+    //     },
+    //       // Add some life
+    //     );
+    // }
 
     //   Highcharts.chart('container', {
 

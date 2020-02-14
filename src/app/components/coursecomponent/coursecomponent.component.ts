@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataServiceService } from 'src/app/data-service.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { JsonPipe } from '@angular/common';
-
+import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   selector: 'app-coursecomponent',
@@ -15,17 +15,24 @@ export class CoursecomponentComponent implements OnInit {
 
   courses: any;
   isActive: boolean;
-  
+  errorStatus:boolean;
+  errorMessage:any;
 
-  constructor(private router: Router, private service: DataServiceService, private http: HttpClient) { }
+  constructor(private router: Router, private service: DataServiceService, private http: HttpClient,private spinner:NgxSpinnerService) { }
 
   ngOnInit() {
-      
+    this.spinner.show();
     this.service.fetchCourses().subscribe(res=>{
-      this.courses=res.courses;
+      this.courses=res["courses"];
+      this.errorStatus=false;
       console.log(this.courses)
+      this.spinner.hide();
+    },error=>{
+      this.errorStatus=true;
+      this.errorMessage=error.message;
+        this.spinner.hide();
+        console.log(error)
     });
-
   }
 
   onSelect(course: any) {
