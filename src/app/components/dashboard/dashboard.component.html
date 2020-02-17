@@ -16,6 +16,7 @@
             Welcome back.</span>
           <a href="/profile" class="btn profile-btn btn-sm btn-info-outline"><b><u>Profile</u></b></a></h4>
       </div>
+
       <div class="col-md-3 row" style="color: #020c4d;">
         <div class="col-md-4 h5  text-center mt-3">
           <!-- {{regCourses.count}} -->
@@ -39,7 +40,7 @@
   </div>
 </section>
 
-<section>
+<section *ngFor="let course of dataList">
   <h2 class="text-secondary m-2"><b>ML Bootcamp</b></h2>
   <hr>
   <div class="container">
@@ -49,7 +50,7 @@
           <div id="gauge01"></div>
         </figure> -->
         <!-- <div class='col-md-4 col-xs-6 col-sm-6'> -->
-          <div id='angleGauge' ></div>
+          <div [attr.id]="'angleGuage' + course.id"></div>
         <!-- </div> -->
 
       </div>
@@ -87,7 +88,6 @@
       </div>
     </div>
   </div>
-</section>
 <hr>
 
 <!-- <figure class="highcharts-figure">
@@ -96,17 +96,18 @@
 
 <div class=" col-md-12">
   <!-- <figure class="highcharts-figure"> -->
-    <div id="container"></div>
+    <div [attr.id]="'Qcontainer' + course.id"></div>
   <!-- </figure> -->
 </div>
 <hr>
 
 <div class=" col-md-12">
   <!-- <figure class="highcharts-figure"> -->
-    <div id="container1"></div>
+    <div [attr.id]="'Acontainer' + course.id"></div>
   <!-- </figure> -->
 </div>
 <hr>
+</section>
 
 <!-- integration code -->
 

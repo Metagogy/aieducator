@@ -4,6 +4,12 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthenticationServiceService {
-
+ 
   constructor() { }
+
+  saveLoginInfo(username, password) {
+    localStorage.setItem('Username' , username);
+    localStorage.setItem('Password' , password);
+  }
+
 }

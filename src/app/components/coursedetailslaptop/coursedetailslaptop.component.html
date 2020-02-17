@@ -1,18 +1,23 @@
+<ngx-spinner><p style="color:white">Loading...</p></ngx-spinner>
+
+<section *ngIf="errorStatus; else elseBlock">
+  <p>Something Went Wrong</p>
+</section>
+
+<ng-template #elseBlock>
 <section class="course-detail mt-5">
   <div class="container">
     <div class="row">
       <div class="col-md-3 p-0">
         <div class="container">
           <div class="row">
-            <button type="button" class="btn btn-lg mx-auto btn-outline-primary" style="width: 100%;"><span class="btn-text"
-                style="font-weight: bold;"><a href="#" >Enroll Now</a></span></button>
-                
+            <button type="button" class="btn btn-lg mx-auto btn-outline-primary" style="width: 100%;"><span
+                class="btn-text" style="font-weight: bold;"><a href="#">Enroll Now</a></span></button>
           </div>
           <div class="row mt-2">
-            <button type="button" class="btn btn-lg btn-wh mx-auto btn-danger" style="width: 100%;"><a href="#"><span class="btn-text"
-                style="font-weight: bold; color: white;">
-                <i class="fa fa-shopping-cart" aria-hidden="true">&nbsp;&nbsp;</i>Add to cart</span></a></button>
-                
+            <button type="button" class="btn btn-lg btn-wh mx-auto btn-danger" style="width: 100%;"><a href="#"><span
+                  class="btn-text" style="font-weight: bold; color: white;">
+                  <i class="fa fa-shopping-cart" aria-hidden="true">&nbsp;&nbsp;</i>Add to cart</span></a></button>
           </div>
         </div>
         <div class="container mt-3">
@@ -23,7 +28,8 @@
                   <span class="couse-details-text"></span>
                 </div> -->
                 <div class="row course-price p-1 card-row text-center" style="justify-content: center;">
-                  <h6 style="font-size: 25px;"><i class="fas fa-rupee-sign" style="font-size: 23px;">&nbsp;</i>{{data.price}}</h6>
+                  <h6 style="font-size: 25px;"><i class="fas fa-rupee-sign"
+                      style="font-size: 23px;">&nbsp;</i>{{data.price}}</h6>
                   <span style="margin-left: 2rem;">
                     <div>
                       <h6 style="color: gray;"><del>₹ 7,440</del></h6>
@@ -47,11 +53,11 @@
                     <i class="fa fa-question-circle" aria-hidden="true">&nbsp;&nbsp;</i>
                     <b>{{data.no_of_quiz}}</b></span>
                 </div>
-                <div class="row course-price p-1 card-row">
+                <!-- <div class="row course-price p-1 card-row">
                   <span class="couse-details-text">
                     <i class="fa fa-user-circle" aria-hidden="true">&nbsp;&nbsp;</i>
                     <b>{{data.student_enrolled}}</b></span>
-                </div>
+                </div> -->
                 <div class="row course-price p-1 card-row">
                   <span class="couse-details-text">
                     <i class="fa fa-shield" aria-hidden="true">&nbsp;&nbsp;</i>
@@ -59,12 +65,12 @@
                 </div>
                 <div class="row course-price p-1 card-row">
                   <span class="couse-details-text">
-                    <i class="fa fa-envelope" aria-hidden="true">&nbsp;&nbsp;</i>
-                    <b>Support</b></span>
+                    <i class="fa fa-users" aria-hidden="true">&nbsp;&nbsp;</i>
+                    <b>Group Dynamics</b></span>
                 </div>
                 <div class="row course-price p-1 card-row">
                   <span class="couse-details-text">
-                    <i class="fa fa-users" aria-hidden="true">&nbsp;&nbsp;</i>
+                    <i class="fa fa-user-circle" aria-hidden="true">&nbsp;&nbsp;</i>
                     <b>Dedicated mentor</b></span>
                 </div>
               </div>
@@ -81,92 +87,86 @@
           <div class="row">
             <div class="container mt-2">
               <div class="row">
-                <!-- <div class="col-sm-1 p-0 m-0">
-                  <img
-                    src="data:image/jpeg;base64,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"
-                    class="img-fluid rounded" alt="">
-                </div> -->
                 <div class="col-sm-11">
                   <div class="container">
                     <div class="row">
-                      <div class="col-md-4 instructor-name">
-                        <div>By,&nbsp;</div><strong class="instructor-name1">{{data.instructor}}</strong>
-                      </div>
+                      <!-- <div class="col-md-4 instructor-name">
+                        <div>By,&nbsp;</div><strong class="instructor-name1">{{data.author}}</strong>
+                      </div> -->
                       <!-- <div class="col-md-4 instructor-name">
                         <div>Category</div>
                         <div class="instructor-name1">Design</div>
                       </div> -->
-                      <div class="col-md-4 instructor-name">
-                        <div>
-                          <div class="row " style="margin-top: 5px;left: 1%;">
-                            <div class="star-rating" style="color: #e2aa03;">
-                              <i class="fa fa-star" aria-hidden="true"></i>
-                              <i class="fa fa-star" aria-hidden="true"></i>
-                              <i class="fa fa-star" aria-hidden="true"></i>
-                              <i class="fa fa-star" aria-hidden="true"></i>
-                              <i class="fa fa-star" aria-hidden="true"></i>
-                            </div>
+                      <!-- <div class="col-md-4 instructor-name"> -->
+                      <!-- <div>
+                        <div class="row " style="margin-top: 5px;left: 1%;">
+                          <div class="star-rating" style="color: #e2aa03;">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
                           </div>
-                          <div>{{data.ratings}}</div>
                         </div>
-                      </div>
+                        <div>{{data.ratings}}</div>
+                      </div> -->
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="container mt-3 p-0">
-              <div class="row rounded course-image" style="padding-inline-start: 2rem;">
-                <img class="img-fluid rounded course-image1" src="{{data.imageUrl}}" alt="image could not be loaded">
-              </div>
+          </div>
+          <div class="container mt-3 p-0">
+            <div class="row rounded course-image" style="padding-inline-start: 2rem;">
+              <img class="img-fluid rounded course-image1" src="/assets/images/{{data.cat}}.png"
+                alt="image could not be loaded">
+            </div>
 
-              <div class="row mt-3">
-                <h4 class="course-description">Course Description</h4>
-              </div>
-              <div class="row mt-3">
-                <p class="cours-paragraph">{{data.description}}</p>
-              </div>
-              <div class="row mt-3">
-                <h4 class="course-description">Curriculum For This Course</h4>
-              </div>
-              <div class="row mt-3">
-                <div class="container demo">
-                  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                    <div class="panel panel-default">
-                      <!-- <div class="panel-heading" role="tab" id="headingTwo">
-                        <h4 class="panel-title">
-                          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                            href="#collapsePartOne{{part.id}}" aria-expanded="false" aria-controls="collapsePartOne">
-                            <i class="fa fa-plus" aria-hidden="true">&nbsp;&nbsp;</i>
-                            {{part.name}}
-                          </a>
-                        </h4>
-                      </div> -->
-                      
-                      <div id="collapsePartOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                        <div class="panel-body" *ngFor="let chapter of data.chapters">
-                          <div class="panel panel-default" >
-                            <div class="panel-heading" role="tab" id="headingTwo">
-                              <h4 class="panel-title">
-                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                                  href="#collapsePartTwo{{chapter.sl_no}}" aria-expanded="false" aria-controls="collapsePartOne">
-                                  <i class="fa fa-plus" aria-hidden="true">&nbsp;&nbsp;</i>
-                                  {{chapter.name}}
-                                </a>
-                              </h4>
-                            </div>
-                            <div id="collapsePartTwo{{chapter.sl_no}}" class="panel-collapse collapse" role="tabpanel"
+            <div class="row mt-3">
+              <h4 class="course-description">Course Description</h4>
+              <hr>
+              
+            </div>
+            <h6>What This Course ?</h6>
+            <div class="row mt-3">
+              <p class="cours-paragraph">{{data.what}}</p>
+            </div>
+            <h6>Why This Course ?</h6>
+            <div class="row mt-3">
+              <p class="cours-paragraph">{{data.why}}</p>
+            </div>
+            <div class="row mt-3">
+              <h4 class="course-description">Curriculum For This Course</h4>
+            </div>
+            <div class="row mt-3">
+              <div class="container demo">
+                <div class="panel-group" id="accordion"  role="tablist" aria-multiselectable="true">
+                      <div class="panel-body" *ngFor="let chapter of chapters">
+                        <div class="panel panel-default">
+                          <div class="panel-heading" role="tab" id="headingTwo">
+                            <h4 class="panel-title">
+                              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                                href="#collapseTopics{{chapter.sl_no}}" aria-expanded="false" aria-controls="collapsePartOne">
+                                <i class="fa fa-plus" aria-hidden="true">&nbsp;&nbsp;</i>
+                                <a >{{chapter.name}}</a>
+                              </a>
+                            </h4>
+                          </div>
+                          <div id="collapseTopics{{chapter.sl_no}}" class="panel-collapse collapse" role="tabpanel"
                             aria-labelledby="headingTwo">
-                                <div *ngFor="let topic of chapter.topics">
-                                    <p>{{topic.name}}</p>
-                                </div>
+                            <div *ngFor="let topic of chapter.topics">
+                              <span (click)="onChapterSelected(chapter.sl_no,topic.sl_no)" style="margin: 3rem; line-height: 3rem;">
+                              <i class="fa fa-file-text-o" aria-hidden="true">&nbsp;&nbsp;</i>
+                              {{topic.name}}
+                              </span>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
+                    <!-- </div> -->
+                  <!-- </div> -->
 
-                      <!-- <div id="collapsePartOne" class="panel-collapse collapse" role="tabpanel"
+                  <!-- <div id="collapsePartOne" class="panel-collapse collapse" role="tabpanel"
                         aria-labelledby="headingTwo">
                         <div class="panel-body">
                           <div class="panel panel-default" *ngFor="let chapter of data.syllabus.part.chapter">
@@ -190,16 +190,16 @@
                           </div>
                         </div> -->
 
-                      <div class="row mt-3">
+                  <!-- <div class="row mt-3">
                         <h4 class="course-description">About the Instructor</h4>
-                      </div>
-                      <div class="container">
+                      </div> -->
+                  <!-- <div class="container">
                         <div class="row">
                           <div class="col-md-4">
                             <img class="img-fluid rounded" src="https://demos.jeweltheme.com/courseware/images/au.jpg"
                               alt="">
                           </div>
-                          <!-- <div class="col-md-8">
+                          <div class="col-md-8">
                             <p><strong><a href="#" style="color: black;">Julia Adams</a></strong><span
                                 style="font-size: 12px;font-weight: 700;">- UX Consultant and Web Design
                                 Instructor</span> </p>
@@ -210,161 +210,158 @@
                             <a href="">
                               <p style="color: blue;font-size: 16px;font-weight: bold;">Learn More >></p>
                             </a>
-                          </div> -->
-                        </div>
-                      </div>
-                      <div class="row mt-3">
-                        <h4 class="course-description">Student Reviews</h4>
-                      </div>
-                      <div class="container rating-card">
-                        <div class="row">
-                          <div class="col-xs-12 col-md-6">
-                            <div class="well well-sm">
-                              <div class="row">
-                                <div class="col-xs-12 col-md-6 text-center">
-                                  <h1 class="rating-num">
-                                    4.0</h1>
-                                  <div class="rating">
-                                    <span class="glyphicon glyphicon-star"></span><span
-                                      class="glyphicon glyphicon-star">
-                                    </span><span class="glyphicon glyphicon-star"></span><span
-                                      class="glyphicon glyphicon-star">
-                                    </span><span class="glyphicon glyphicon-star-empty"></span>
-                                  </div>
-                                  <div>
-                                    <span class="glyphicon glyphicon-user"></span>1,050,008 total
-                                  </div>
-                                </div>
-                                <div class="col-xs-12 col-md-6">
-                                  <div class="row rating-desc">
-                                    <div class="col-xs-3 col-md-3 text-right">
-                                      <span class="glyphicon glyphicon-star"></span>5
-                                    </div>
-                                    <div class="col-xs-8 col-md-9">
-                                      <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-success" role="progressbar"
-                                          aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                                          <span class="sr-only">80%</span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <!-- end 5 -->
-                                    <div class="col-xs-3 col-md-3 text-right">
-                                      <span class="glyphicon glyphicon-star"></span>4
-                                    </div>
-                                    <div class="col-xs-8 col-md-9">
-                                      <div class="progress">
-                                        <div class="progress-bar progress-bar-success" role="progressbar"
-                                          aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                          <span class="sr-only">60%</span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <!-- end 4 -->
-                                    <div class="col-xs-3 col-md-3 text-right">
-                                      <span class="glyphicon glyphicon-star"></span>3
-                                    </div>
-                                    <div class="col-xs-8 col-md-9">
-                                      <div class="progress">
-                                        <div class="progress-bar progress-bar-info" role="progressbar"
-                                          aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                          <span class="sr-only">40%</span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <!-- end 3 -->
-                                    <div class="col-xs-3 col-md-3 text-right">
-                                      <span class="glyphicon glyphicon-star"></span>2
-                                    </div>
-                                    <div class="col-xs-8 col-md-9">
-                                      <div class="progress">
-                                        <div class="progress-bar progress-bar-warning" role="progressbar"
-                                          aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-                                          <span class="sr-only">20%</span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <!-- end 2 -->
-                                    <div class="col-xs-3 col-md-3 text-right">
-                                      <span class="glyphicon glyphicon-star"></span>1
-                                    </div>
-                                    <div class="col-xs-8 col-md-9">
-                                      <div class="progress">
-                                        <div class="progress-bar progress-bar-danger" role="progressbar"
-                                          aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 15%">
-                                          <span class="sr-only">15%</span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <!-- end 1 -->
-                                  </div>
-                                  <!-- end row -->
-                                </div>
-                              </div>
-                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div class="row mt-3">
-                        <h4 class="course-description">Related Courses</h4>
-                      </div>
-                      <div class="container">
-                        <div class="row">
-                          <div class="col-md-4">
-                            <div class="card ">
-                              <div class="card-body m-0 p-0">
-                                <div>
-                                  <img class="card-img img-fluid m-0 p-0 rounded"
-                                    src="https://demos.jeweltheme.com/courseware/images/popular/1.jpg" alt="">
-                                </div>
-                                <div>
-                                  <p style="font-size: 13px;font-weight: 600;">HTML5, CSS3, Bootstrap Web
-                                    Design for Beginners </p>
-                                  <div style="font-size:13px;color: gray;font-weight: 700;">Justin Marks
-                                  </div>
-                                  <p style="color:blue;font-weight: bold;">$15.99</p>
-                                </div>
+                      </div> -->
+                  <!-- <div class="row mt-3">
+                    <h4 class="course-description">Student Reviews</h4>
+                  </div> -->
+                  <!-- <div class="container rating-card">
+                    <div class="row">
+                      <div class="col-xs-12 col-md-6">
+                        <div class="well well-sm">
+                          <div class="row">
+                            <div class="col-xs-12 col-md-6 text-center">
+                              <h1 class="rating-num">
+                                4.0</h1>
+                              <div class="rating">
+                                <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
+                                </span><span class="glyphicon glyphicon-star"></span><span
+                                  class="glyphicon glyphicon-star">
+                                </span><span class="glyphicon glyphicon-star-empty"></span>
+                              </div>
+                              <div>
+                                <span class="glyphicon glyphicon-user"></span>1,050,008 total
                               </div>
                             </div>
-                          </div>
-                          <div class="col-md-4">
-                            <div class="card">
-                              <div class="card-body m-0 p-0">
-                                <div>
-                                  <img class="card-img img-fluid m-0 p-0 rounded"
-                                    src="https://demos.jeweltheme.com/courseware/images/popular/1.jpg" alt="">
+                            <div class="col-xs-12 col-md-6">
+                              <div class="row rating-desc">
+                                <div class="col-xs-3 col-md-3 text-right">
+                                  <span class="glyphicon glyphicon-star"></span>5
                                 </div>
-                                <div>
-                                  <p style="font-size: 13px;font-weight: 600;">HTML5, CSS3, Bootstrap Web
-                                    Design for Beginners </p>
-                                  <div style="font-size:13px;color: gray;font-weight: 700;">Justin Marks
+                                <div class="col-xs-8 col-md-9">
+                                  <div class="progress progress-striped">
+                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20"
+                                      aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                                      <span class="sr-only">80%</span>
+                                    </div>
                                   </div>
-                                  <p style="color:blue;font-weight: bold;">$15.99</p>
                                 </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-md-4">
-                            <div class="card ">
-                              <div class="card-body m-0 p-0">
-                                <div>
-                                  <img class="card-img img-fluid m-0 p-0 rounded"
-                                    src="https://demos.jeweltheme.com/courseware/images/popular/1.jpg" alt="">
+                                <!-- end 5 
+                                <div class="col-xs-3 col-md-3 text-right">
+                                  <span class="glyphicon glyphicon-star"></span>4
                                 </div>
-                                <div>
-                                  <p style="font-size: 13px;font-weight: 600;">HTML5, CSS3, Bootstrap Web
-                                    Design for Beginners </p>
-                                  <div style="font-size:13px;color: gray;font-weight: 700;">Justin Marks
+                                <div class="col-xs-8 col-md-9">
+                                  <div class="progress">
+                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20"
+                                      aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                      <span class="sr-only">60%</span>
+                                    </div>
                                   </div>
-                                  <p style="color:blue;font-weight: bold;">$15.99</p>
                                 </div>
+                                <!-- end 4 
+                                <div class="col-xs-3 col-md-3 text-right">
+                                  <span class="glyphicon glyphicon-star"></span>3
+                                </div>
+                                <div class="col-xs-8 col-md-9">
+                                  <div class="progress">
+                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20"
+                                      aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                      <span class="sr-only">40%</span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!-- end 3 
+                                <div class="col-xs-3 col-md-3 text-right">
+                                  <span class="glyphicon glyphicon-star"></span>2
+                                </div>
+                                <div class="col-xs-8 col-md-9">
+                                  <div class="progress">
+                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="20"
+                                      aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                                      <span class="sr-only">20%</span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!-- end 2 
+                                <div class="col-xs-3 col-md-3 text-right">
+                                  <span class="glyphicon glyphicon-star"></span>1
+                                </div>
+                                <div class="col-xs-8 col-md-9">
+                                  <div class="progress">
+                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80"
+                                      aria-valuemin="0" aria-valuemax="100" style="width: 15%">
+                                      <span class="sr-only">15%</span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!-- end 1 
                               </div>
+                              <!-- end row 
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
+                  <!-- <div class="row mt-3">
+                    <h4 class="course-description">Related Courses</h4>
+                  </div> -->
+                  <!-- <div class="container">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="card ">
+                          <div class="card-body m-0 p-0">
+                            <div>
+                              <img class="card-img img-fluid m-0 p-0 rounded"
+                                src="https://demos.jeweltheme.com/courseware/images/popular/1.jpg" alt="">
+                            </div>
+                            <div>
+                              <p style="font-size: 13px;font-weight: 600;">HTML5, CSS3, Bootstrap Web
+                                Design for Beginners </p>
+                              <div style="font-size:13px;color: gray;font-weight: 700;">Justin Marks
+                              </div>
+                              <p style="color:blue;font-weight: bold;">$15.99</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="card">
+                          <div class="card-body m-0 p-0">
+                            <div>
+                              <img class="card-img img-fluid m-0 p-0 rounded"
+                                src="https://demos.jeweltheme.com/courseware/images/popular/1.jpg" alt="">
+                            </div>
+                            <div>
+                              <p style="font-size: 13px;font-weight: 600;">HTML5, CSS3, Bootstrap Web
+                                Design for Beginners </p>
+                              <div style="font-size:13px;color: gray;font-weight: 700;">Justin Marks
+                              </div>
+                              <p style="color:blue;font-weight: bold;">$15.99</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="card ">
+                          <div class="card-body m-0 p-0">
+                            <div>
+                              <img class="card-img img-fluid m-0 p-0 rounded"
+                                src="https://demos.jeweltheme.com/courseware/images/popular/1.jpg" alt="">
+                            </div>
+                            <div>
+                              <p style="font-size: 13px;font-weight: 600;">HTML5, CSS3, Bootstrap Web
+                                Design for Beginners </p>
+                              <div style="font-size:13px;color: gray;font-weight: 700;">Justin Marks
+                              </div>
+                              <p style="color:blue;font-weight: bold;">$15.99</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div> -->
                 </div>
               </div>
             </div>
@@ -372,7 +369,9 @@
         </div>
       </div>
     </div>
+  </div>
 </section>
+</ng-template>
 
 <script>
   function toggleIcon(e) {
