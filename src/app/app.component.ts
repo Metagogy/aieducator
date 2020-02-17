@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as AOS from 'aos';
+import {AuthseviceService} from 'src/app/services/authsevice.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +11,22 @@ import * as AOS from 'aos';
 
 export class AppComponent implements OnInit{
   title = 'metagogyai';
+  loginStatus:boolean;
+  
+  constructor(private service:AuthseviceService,private router:Router){}
+  logout1(){
+    this.service.logout();
+    window.location.reload();
+  }
+  
   ngOnInit(){
+    if(this.service.isUserLoggedIn())
+    {
+      this.loginStatus=true;
+    }
+    else{
+      this.loginStatus=false;
+    }
     AOS.init();
   }
 }

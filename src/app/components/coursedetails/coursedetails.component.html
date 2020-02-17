@@ -1,8 +1,5 @@
 <div class="container">
-    <div class="row" *ngIf="innerWidth>768;else elseBlock">
+    <div class="row">
         <app-coursedetailslaptop></app-coursedetailslaptop>
     </div>
-    <ng-template #elseBlock>
-        <app-coursedetailsmobile></app-coursedetailsmobile>
-    </ng-template>
 </div>

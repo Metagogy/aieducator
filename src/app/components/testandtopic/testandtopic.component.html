@@ -1,0 +1,89 @@
+<ngx-spinner>
+    <p style="color:white">Loading...</p>
+</ngx-spinner>
+
+<section *ngIf="errorStatus; else elseBlock">
+    <p>Something Went Wrong</p>
+</section>
+
+<ng-template #elseBlock>
+    <section>
+        <div class="container-fluid ml-3 mt-3 mb-3">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="row">
+                        <div class="card p-3 m-1" *ngFor="let chapters of chapters" style="width:100%">
+                            <div class="container demo">
+                                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                    <div class="panel-body">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading" role="tab" id="headingTwo">
+                                                <h4 class="panel-title">
+                                                    <a class="collapsed" role="button" data-toggle="collapse"
+                                                        data-parent="#accordion"
+                                                        href="#collapseTopics{{chapters.sl_no}}" aria-expanded="false"
+                                                        aria-controls="collapsePartOne">
+                                                        {{chapters.Chapter}}
+                                                        <i class="fa fa-plus" style="float:right"
+                                                            aria-hidden="true">&nbsp;&nbsp;</i>
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseTopics{{chapters.sl_no}}" class="panel-collapse collapse"
+                                                role="tabpanel" aria-labelledby="headingTwo">
+                                                <div *ngFor="let topic of chapters.topic">
+                                                    <a type="button"
+                                                        (click)="changeType(chapters.sl_no,topic.sl_no,'topic')">
+                                                        <span style="margin: 3rem; line-height: 3rem;">
+                                                            <i class="fa fa-file-text-o"
+                                                                aria-hidden="true">&nbsp;&nbsp;</i>
+                                                            {{topic.name}}
+                                                        </span>
+                                                    </a>
+                                                    <div *ngFor="let test of chapters.test">
+                                                        <!-- <a type="button" (click)="changeiFrameSource(topic.src)"> -->
+                                                        <span (click)="changeType(chapters.id,test.id,'test')"
+                                                            style="margin: 3rem; line-height: 3rem;"
+                                                            *ngIf="test.sl_no==(+topic.sl_no)+1">
+                                                            <i class="fas fa-pen" aria-hidden="true">&nbsp;&nbsp;</i>
+                                                            {{test.name}}
+                                                        </span>
+                                                        <!-- </a> -->
+                                                    </div>
+                                                </div>
+                                                <div *ngFor="let problem of chapters.problem">
+                                                    <a type="button"
+                                                        (click)="changeType(chapters.sl_no,problem.id,'assignment')">
+                                                        <span style="margin: 3rem; line-height: 3rem;">
+                                                            <i class="fas fa-bolt" aria-hidden="true">&nbsp;&nbsp;</i>
+                                                            {{problem.pblm_id}}
+                                                        </span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <router-outlet></router-outlet>
+                    <!-- <div>
+                        <div *ngIf="typeOf=='topic';else test">
+                            <iframe src="https://ibastatic.sfo2.digitaloceanspaces.com/13/100/101" frameborder="0">
+                            </iframe>
+                        </div>
+                        <ng-template #test>
+                            <app-mcq *ngIf="typeOf=='test'; else assign"></app-mcq>
+                        </ng-template>
+                        <ng-template #assign>
+                            <app-assignments *ngIf="typeOf=='assignment'"></app-assignments>
+                        </ng-template>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </section>
+</ng-template>
