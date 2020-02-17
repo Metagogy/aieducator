@@ -17,8 +17,18 @@ export class TestandtopicService {
   }
 
   getAssignment(id:any){
-    console.log("Getting Assingment from "+this.url+"Assig/"+id);
-    return this.http.get(this.url+"Assig/"+id);
+    // console.log("Getting Assingment from "+this.url+"Assig/"+id);
+    return this.http.get(this.url+"Assig/"+id); 
   }
-  
+
+  getSecondMethod(courseid:any,chapter_id:any,test_id:any,count:any,ans:any){
+    console.log("getting second method");
+    console.log(this.url+"MCQ/"+courseid+"/"+chapter_id+"/"+test_id+"/"+count);
+    return this.http.post(this.url+"MCQ/"+courseid+"/"+chapter_id+"/"+test_id+"/"+count,{ans})
+  }
+
+  getMcq(courseid:any,chapter_id:any,test_id:any,count:any){
+      return this.http.get(this.url+"MCQ/"+courseid+"/"+chapter_id+"/"+test_id+"/"+count);
+  }
+
 }

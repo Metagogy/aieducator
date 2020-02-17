@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {TestandtopicService} from '../../services/testandtopic.service';
-// import {AssignmentsComponent} from 'src/app/components/assignments/assignments.component';
-// import {McqComponent} from 'src/app/components/mcq/mcq.component';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {Router,ActivatedRoute} from '@angular/router';
 
@@ -23,7 +21,7 @@ export class TestandtopicComponent implements OnInit {
   errorStatus:boolean;
   errorMessage:any;
   id:any;
-
+  count:number=0;
 
   constructor(private service:TestandtopicService,private spinner:NgxSpinnerService,private route:ActivatedRoute,private router:Router) { }
 
@@ -49,16 +47,15 @@ export class TestandtopicComponent implements OnInit {
         this.typeOf="test";
         this.chapterNo=chapterno;
         this.sl_no=type;
-        this.router.navigate(['test'],{relativeTo:this.route});
+        console.log(this.chapterNo);
+        console.log(this.sl_no);
+        this.router.navigate(['MCQ',this.chapterNo,this.sl_no],{relativeTo:this.route});
       }
-      console.log(this.url+this.chapterNo+"/"+this.sl_no);
-      console.log(this.typeOf);
   }
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
     this.spinner.show();
-    this.url="https://ibastatic.sfo2.digitaloceanspaces.com/";
     this.response=this.service.getSyllabusFromBackend(this.id).subscribe(res=>{
         this.response=res['data'];
         if(localStorage.getItem('syllabus')==null)
@@ -74,5 +71,4 @@ export class TestandtopicComponent implements OnInit {
         this.spinner.hide();
       });
   }
-
 }

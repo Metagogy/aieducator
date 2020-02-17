@@ -31,6 +31,7 @@
     "highcharts-more": "^0.1.7",
     "jquery": "^3.4.1",
     "json-server": "^0.15.1",
+    "ng2-ace-editor": "^0.3.9",
     "ng2-charts": "^2.3.0",
     "ngx-spinner": "^8.1.0",
     "rxjs": "~6.4.0",

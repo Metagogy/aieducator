@@ -2,18 +2,28 @@
 <div class="test">
     <h3 class="mb-0 mb-3 mt-3 ml-2 ">{{name}}</h3>
     <form action="/Testvalidate/{{count}}" method="post" enctype="multipart/form-data" >
+<<<<<<< HEAD
         <!-- {% csrf_token %} -->
         <input type="hidden" name="questionid" id="questionid" value="{{questions.id}}">
         <input type="hidden" name="totalcount" value="{{totalcount}}">
         <input type="hidden" name="next" value="{{next}}">
         <input type="hidden" name="previous" value="{{previous}}">
         <input type="hidden" name="timegiven" id= "timegiven" value="{{questions.timegiven}}">
+=======
+
+        <!-- <input type="hidden" name="questionid" id="questionid" value="{{questions.id}}">
+        <input type="hidden" name="totalcount" value="{{totalcount}}">
+        <input type="hidden" name="next" value="{{next}}">
+        <input type="hidden" name="previous" value="{{previous}}">
+        <input type="hidden" name="timegiven" id= "timegiven" value="{{questions.timegiven}}"> -->
+>>>>>>> 39aabe68088ade9659bea5f387711e681fd7ea07
         <div class="card card-body shadow-3d">
                 <div class="row bg-info p-2 rounded text-white">
                     <div class="col-md-10">
                         Q. Single Choice Question
                     </div>
                     <div class="col-md-2">
+<<<<<<< HEAD
                         <h2><i class="far fa-clock"></i>&nbsp;<span id="time">0(sec)</span></h2>
                     </div>
                 </div>
@@ -34,6 +44,26 @@
                 </ul>
                 <input type="hidden" name="timeTaken" value="" id="timeTaken" />
                 <button type="submit" id="TimeButton" value = "Submit Answer" class="btn btn-primary">Submit Answer</button>
+=======
+                        <h2><i class="far fa-clock"></i>&nbsp;<span id="time">{{sec}}(sec)</span></h2>
+                    </div>
+                </div>
+                <pre>
+                    <p  class="lead"><pre>{{question}}</pre>
+                </pre>
+                <ul class="list-group mb-5" *ngFor="let answer of answers">
+                    <li class="list-group-item">
+                        <div class="custom-radio" >
+                        <div class="custom-control custom-radio">
+                           <input type="radio" class="custom-control-input" [(ngModel)]="submitAns"  value={{answer.ans}} name="answer" id="{{answer.id}}" required="">
+                           <label class="custom-control-label" for="{{answer.id}}"><span><pre>{{answer.ans}}</pre></span></label>
+                        </div>
+                        </div>
+                    </li> 
+                </ul>
+                <input type="hidden" name="timeTaken"  value="" id="timeTaken"/>
+                <button type="submit" (click)="onSubmitMCQ(question.Question)" id="TimeButton" value = "Submit Answer" class="btn btn-primary">Submit Answer</button>
+>>>>>>> 39aabe68088ade9659bea5f387711e681fd7ea07
         </div>
     </form>
 </div>

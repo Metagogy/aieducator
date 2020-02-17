@@ -19,6 +19,8 @@ import { AppComponent } from './app.component';
 import { McqComponent } from './components/mcq/mcq.component';
 import { AssignmentsComponent } from './components/assignments/assignments.component';
 import { TopiccomponentComponent } from './components/topiccomponent/topiccomponent.component';
+import { AuthGuard } from './guards/auth.guard';
+import { OppguardGuard } from './guards/oppguard.guard';
 
 const routes: Routes = [
   {path: 'contactus', component: ContactusComponent},
@@ -27,20 +29,21 @@ const routes: Routes = [
   {path: 'aboutus', component: AboutusComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'course', component: CoursecomponentComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent},
+  {path: 'login', component: LoginComponent,canActivate:[OppguardGuard]},
+  {path: 'register', component: RegisterComponent,canActivate:[OppguardGuard]},
   {path: 'scourse', component: SinglecourseComponent},
-  {path: 'mcq', component: McqsectionComponent},
+  {path: 'mcq', component: McqsectionComponent,canActivate:[AuthGuard]},
   {path: 'coursedetails/:id', component: CoursedetailslaptopComponent},
   {path: 'coursecatalog', component: CoursecatalogComponent},
-  {path: 'dashboard', component: DashboardComponent},
+  {path: 'dashboard', component: DashboardComponent,canActivate:[AuthGuard]},
   {
     path: 'testandtopic/:id',
     component: TestandtopicComponent,
+    canActivate:[AuthGuard],
     children:[
-      {path:'test',component:McqComponent},
-      {path:'assign/:assign_id',component:AssignmentsComponent},
-      {path:'topic',component:TopiccomponentComponent},
+      {path:'MCQ/:chapter_id/:test_id',component:McqComponent,canActivate:[AuthGuard]},
+      {path:'assign/:assign_id',component:AssignmentsComponent,canActivate:[AuthGuard]},
+      {path:'topic',component:TopiccomponentComponent,canActivate:[AuthGuard]},
     ]
 }
   

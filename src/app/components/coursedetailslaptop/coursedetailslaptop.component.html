@@ -155,7 +155,11 @@
                           <div id="collapseTopics{{chapter.sl_no}}" class="panel-collapse collapse" role="tabpanel"
                             aria-labelledby="headingTwo">
                             <div *ngFor="let topic of chapter.topics">
+<<<<<<< HEAD
                               <span (click)="onChapterSelected(chapter.sl_no,topic.sl_no)" style="margin: 3rem; line-height: 3rem;">
+=======
+                              <span (click)="onChapterSelected(id,chapter.sl_no,topic.sl_no)" style="margin: 3rem; line-height: 3rem;">
+>>>>>>> 39aabe68088ade9659bea5f387711e681fd7ea07
                               <i class="fa fa-file-text-o" aria-hidden="true">&nbsp;&nbsp;</i>
                               {{topic.name}}
                               </span>

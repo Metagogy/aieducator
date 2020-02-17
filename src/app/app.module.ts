@@ -35,6 +35,8 @@ import { AssignmentsComponent } from './components/assignments/assignments.compo
 import { McqComponent } from './components/mcq/mcq.component';
 import {AuthGuard} from 'src/app/guards/auth.guard';
 import { TopiccomponentComponent } from './components/topiccomponent/topiccomponent.component';
+import { OppguardGuard } from './guards/oppguard.guard';
+import {AceEditorModule } from 'ng2-ace-editor';
 
 @NgModule({
   declarations: [
@@ -60,6 +62,7 @@ import { TopiccomponentComponent } from './components/topiccomponent/topiccompon
     TopiccomponentComponent,
   ],
   imports: [
+    AceEditorModule,
     NgxSpinnerModule,
     BrowserModule,
     AppRoutingModule,
@@ -74,6 +77,7 @@ import { TopiccomponentComponent } from './components/topiccomponent/topiccompon
   ],
   providers: [
     AuthGuard,
+    OppguardGuard,
     AuthenticationServiceService,
     DataServiceService,
     AuthseviceService,
