@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {TestandtopicService} from 'src/app/services/testandtopic.service';
-<<<<<<< HEAD
-=======
 import {ActivatedRoute,Router} from '@angular/router';
->>>>>>> 39aabe68088ade9659bea5f387711e681fd7ea07
 
 @Component({
   selector: 'app-mcq',
@@ -13,12 +10,6 @@ import {ActivatedRoute,Router} from '@angular/router';
 
 export class McqComponent implements OnInit {
 
-<<<<<<< HEAD
-  constructor(private service:TestandtopicService) { }
-
-  ngOnInit() {
-    console.log("Hello");
-=======
   courseid:any;
   chapterid:any;
   testid:any;
@@ -73,7 +64,6 @@ export class McqComponent implements OnInit {
     },error=>{
         console.log("You caught an error")
       });  
->>>>>>> 39aabe68088ade9659bea5f387711e681fd7ea07
   }
 
 }

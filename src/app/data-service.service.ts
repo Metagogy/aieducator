@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 
 export class DataServiceService {
   courseId: any;
-  url = 'http://192.168.1.189:8000/';
+  url = 'http://192.168.1.131:8000/';
   data:any;
   
   constructor(private http: HttpClient) { }

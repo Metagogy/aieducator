@@ -6,7 +6,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class TestandtopicService {
 
-  url = 'http://192.168.1.189:8000/';
+  url = 'http://192.168.1.131:8000/';
   
   constructor(private http:HttpClient) {}
 
@@ -15,6 +15,12 @@ export class TestandtopicService {
     console.log("Getting syllabus from backened");
     return this.http.get(this.url+"navigation_data/"+id+"/");
   }
+
+  saveAssignment(id:any, code:any){
+    // console.log("Getting Assingment from "+this.url+"Assig/"+id);
+    return this.http.post(this.url+"saveProblem/",{'id':id, 'code':code}); 
+  }
+
 
   getAssignment(id:any){
     // console.log("Getting Assingment from "+this.url+"Assig/"+id);
