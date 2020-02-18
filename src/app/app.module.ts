@@ -37,6 +37,8 @@ import {AuthGuard} from 'src/app/guards/auth.guard';
 import { TopiccomponentComponent } from './components/topiccomponent/topiccomponent.component';
 import { OppguardGuard } from './guards/oppguard.guard';
 import {AceEditorModule } from 'ng2-ace-editor';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -62,6 +64,8 @@ import {AceEditorModule } from 'ng2-ace-editor';
     TopiccomponentComponent,
   ],
   imports: [
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
     AceEditorModule,
     NgxSpinnerModule,
     BrowserModule,

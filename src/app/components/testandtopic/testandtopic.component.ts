@@ -58,6 +58,7 @@ export class TestandtopicComponent implements OnInit {
     this.spinner.show();
     this.response=this.service.getSyllabusFromBackend(this.id).subscribe(res=>{
         this.response=res['data'];
+        // console.log(res);
         if(localStorage.getItem('syllabus')==null)
         {
           localStorage.setItem("syllabus",this.response);

@@ -16,7 +16,7 @@ export class DataServiceService {
     return this.http.get(this.url);
   }
 
-  getCoursesData(id) {
+  getCoursesData(id:any) {
     // perticular course details
     return this.http.get(this.url+'course/'+id+'/');
   }

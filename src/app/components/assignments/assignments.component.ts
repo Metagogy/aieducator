@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import { Component, OnInit } from '@angular/core';
-=======
-import { Component, OnInit, wtfStartTimeRange, AfterViewInit } from '@angular/core';
->>>>>>> 39aabe68088ade9659bea5f387711e681fd7ea07
 import {ActivatedRoute,Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {TestandtopicService} from 'src/app/services/testandtopic.service';
@@ -14,23 +10,6 @@ import {TestandtopicService} from 'src/app/services/testandtopic.service';
 })
 export class AssignmentsComponent implements OnInit {
 
-<<<<<<< HEAD
-  constructor(private route:ActivatedRoute,private router:Router,private http:HttpClient,private service:TestandtopicService) { }
-
-  id:any;
-  
-  ngOnInit() {
-    this.id=this.route.snapshot.paramMap.get('assign_id');
-    console.log(this.id);
-    this.service.getAssignment(this.id).subscribe(res=>{
-      console.log(res);
-    },error=>{
-      console.log(error);
-    });
-    
-  }
-
-=======
   constructor(private route:ActivatedRoute,private router:Router,private http:HttpClient,private service:TestandtopicService) {
       route.params.subscribe(()=>{
         this.ngOnInit();
@@ -93,5 +72,4 @@ export class AssignmentsComponent implements OnInit {
       console.log(error);
     });
   }
->>>>>>> 39aabe68088ade9659bea5f387711e681fd7ea07
 }

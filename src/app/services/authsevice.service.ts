@@ -21,15 +21,11 @@ export class AuthseviceService {
   }
   
   login(email:string,password:string){
-    // console.log("The email is"+email);
-    // console.log("The password is"+password)
     return this.http.post("http://192.168.1.189:8000/api-token-auth/",{username:email,password:password});
   }
 
   register(email:string,password:string,name:string){
-    // console.log("The email is"+email);
-    // console.log("The password is"+password)
-    return this.http.post("http://192.168.1.189:8000/register_serializer/",{username:name, email:email, password:password});
+    return this.http.post("http://192.168.1.189:8000/register_serializer/",{email:email,password:password,username:name});
   }
 
   logout()

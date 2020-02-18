@@ -3,10 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { DataServiceService } from 'src/app/data-service.service';
 import { HttpClient } from '@angular/common/http';
 import {NgxSpinnerService} from 'ngx-spinner';
-<<<<<<< HEAD
-=======
 import {Router} from '@angular/router';
->>>>>>> 39aabe68088ade9659bea5f387711e681fd7ea07
 
 @Component({
   selector: 'app-coursedetailslaptop',
@@ -21,17 +18,6 @@ export class CoursedetailslaptopComponent implements OnInit {
   chapters:any;
   errorStatus:boolean;
   errorMessage:any;
-<<<<<<< HEAD
-
-
-  onChapterSelected(sl_no:any,topicNo:any)
-  {
-    console.log("chapter with "+sl_no+" and the topic no is"+topicNo);    
-  }
-
-  constructor(private route: ActivatedRoute, private service: DataServiceService, private http: HttpClient,private spinner:NgxSpinnerService) { }
-
-=======
 
   onChapterSelected(id:any,sl_no:any,topicNo:any)
   {
@@ -41,7 +27,6 @@ export class CoursedetailslaptopComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private service: DataServiceService, private http: HttpClient,private spinner:NgxSpinnerService,private router:Router) { }
 
->>>>>>> 39aabe68088ade9659bea5f387711e681fd7ea07
   ngOnInit() {
     this.spinner.show();
     this.id = this.route.snapshot.paramMap.get('id');
