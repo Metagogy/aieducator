@@ -13,13 +13,13 @@ export class AppComponent implements OnInit{
   isLogin = false;
 
   constructor(private router: Router){
-    if(localStorage.getItem('isLogin') == 'true'){
-      this.isLogin = true;
-      this.router.navigateByUrl('/login_home');
-    }else{
-      this.isLogin = false;
-      this.router.navigateByUrl('/home');
-    }
+    // if(localStorage.getItem('isLogin') == 'true'){
+    //   this.isLogin = true;
+    //   this.router.navigateByUrl('/login_home');
+    // }else{
+    //   this.isLogin = false;
+    //   this.router.navigateByUrl('/home');
+    // }
   }
 
   ngOnInit(){

@@ -97,4 +97,9 @@ export class CoursedetailslaptopComponent implements OnInit {
     //        }]
 
   }
+
+  addToCart(id){
+    
+  }
+
 }

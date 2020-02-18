@@ -15,7 +15,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import {CoursedetailslaptopComponent} from './components/coursedetailslaptop/coursedetailslaptop.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoggedInHomeComponent } from './components/logged-in-home/logged-in-home.component';
-import { AssighnmentsComponent } from './components/assighnments/assighnments.component';
+import { AssignmentsComponent } from './components/assignments/assignments.component';
 import { CartComponent } from './components/cart/cart.component';
 import { McqComponent } from './components/mcq/mcq.component';
 
@@ -34,7 +34,7 @@ const routes: Routes = [
   {path: 'coursecatalog', component: CoursecatalogComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'testandtopic',component: TestandtopicComponent},
-  {path: 'assignments', component: AssighnmentsComponent},
+  {path: 'assignments', component: AssignmentsComponent},
   {path: 'mcq', component: McqComponent},
   {path: 'cart', component: CartComponent},
 ];

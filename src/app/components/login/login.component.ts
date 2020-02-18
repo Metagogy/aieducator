@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationServiceService } from 'src/app/authentication-service.service';
 import { AuthseviceService } from 'src/app/services/authsevice.service';
+import {Router} from '@angular/router';
+import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   selector: 'app-login',
@@ -9,10 +11,11 @@ import { AuthseviceService } from 'src/app/services/authsevice.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthseviceService) { }
+  constructor(private authService: AuthseviceService,private router:Router,private spinner:NgxSpinnerService) { }
 
   email:string;
   password:string;
+  errorStatus:boolean;
 
   ngOnInit() {
 
@@ -35,17 +38,20 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
+    this.spinner.show();
     this.authService.login(this.email,this.password).subscribe(
-      (data)=>{console.log(data)}
+      (data)=>{
+        // console.log(data)
+        this.authService.setTokens(data["token"]);
+        window.location.reload();
+        this.router.navigate(['dashboard']);
+        this.spinner.hide();
+      },error=>{
+        console.log(error);
+        alert("You are not logged in due to "+error.statusText);
+        this.spinner.hide();
+      }
     );
   }
 
-  // login(form) {
-  //   alert('Your Username :' + form.value.email + '\n Password is :' + form.value.password);
-  //   console.log(form.value);  // { first: '', last: '' }
-  //   console.log(form.valid);  // false
-  //   // localStorage.setItem('Username' , form.value.email);
-  //   // localStorage.setItem('Password' , form.value.password);
-  //   this.Auth.saveLoginInfo(form.value.email, form.value.password);
-  // }
 }

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {TestandtopicService} from '../../services/testandtopic.service';
-import {AssignmentsComponent} from 'src/app/components/assignments/assignments.component';
-import {McqComponent} from 'src/app/components/mcq/mcq.component';
 import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
@@ -22,8 +20,7 @@ export class TestandtopicComponent implements OnInit {
   errorStatus:boolean;
   errorMessage:any;
 
-
-  constructor(private service:TestandtopicService,private spinner:NgxSpinnerService) { }
+  constructor(private service:TestandtopicService,private spinner: NgxSpinnerService) { }
 
   changeType(chapterno:any,type:any,typeFrom:string)
   {

@@ -33,6 +33,7 @@ import {AuthInterceptor} from 'src/app/helpers/errorintreceptor';
 import {AuthseviceService} from 'src/app/services/authsevice.service';
 import { AssignmentsComponent } from './components/assignments/assignments.component';
 import { McqComponent } from './components/mcq/mcq.component';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { McqComponent } from './components/mcq/mcq.component';
     DashboardComponent,
     TestandtopicComponent,
     AssignmentsComponent,
-    McqComponent
+    McqComponent,
+    CartComponent
   ],
   imports: [
     NgxSpinnerModule,

@@ -13,9 +13,9 @@ import { first } from 'rxjs/operators';
 export class DashboardComponent implements OnInit {
 
     arrayItem: any;
-    progress;
-    quizes;
-    rewards;
+    progress: any;
+    quizes: any;
+    rewards: any;
 
     constructor(private service: DataServiceService) { }
 
