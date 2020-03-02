@@ -24,7 +24,7 @@
                         <div class="card-header bg-white pb-5">
                             <div class="text-center mb-3 h5">Login</div>
                             <!-- <form role="form" action="/auth/" method="POST"> -->
-                                <form #loginform="ngForm" role="form" method="POST" (ngSubmit)="login(loginform)" class="form">
+                                <form #loginform="ngForm" role="form" method="POST" class="form">
                                 <div class="form-group mb-3">
                                     <div class="input-group input-group-alternative">
                                         <!-- <input class="form-control" placeholder="Email" type="email" name="user_name"> -->
@@ -36,6 +36,9 @@
                                         <!-- <input class="form-control" placeholder="Password" type="password" name="password"> -->
                                         <input (input)="onUpdatePassword($event)" class="form-control form-control-lg" id="password" placeholder="Password" type="password" name="password" ngModel required>
                                     </div>
+                                </div>
+                                <div class="row">
+                                    <p class="text-danger" *ngIf="showE">{{errorMessage}}</p>
                                 </div>
                                 <div class="custom-control custom-control-alternative custom-checkbox">
                                     <input class="custom-control-input" id=" customCheckLogin" type="checkbox">
@@ -81,10 +84,10 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-6">
-                            <a href="/changePassword" class="text-light"><small>Forgot password?</small></a>
+                            <a routerLink="/forgotPassword" class="text-light"><small>Forgot password?</small></a>
                         </div>
                         <div class="col-6 text-right">
-                            <a href="/register" class="text-light"><small>Create new account</small></a>
+                            <a routerLink='/register' class="text-light"><small>Create new account</small></a>
                         </div>
                     </div>
                 </div>

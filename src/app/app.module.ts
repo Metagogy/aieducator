@@ -39,6 +39,24 @@ import { OppguardGuard } from './guards/oppguard.guard';
 import {AceEditorModule } from 'ng2-ace-editor';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {CartComponent} from 'src/app/components/cart/cart.component';
+import { RegisteredCoursesComponent } from './components/registered-courses/registered-courses.component';
+import { ContentDisplayComponent } from './components/content-display/content-display.component';
+import {NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
+import {AngularFireModule} from 'angularfire2';
+import { environment } from 'src/environments/environment';
+import {AngularFireDatabaseModule} from 'angularfire2/database';
+import { SingleDashboardComponent } from './components/single-dashboard/single-dashboard.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
+import {CountdownModule} from 'ngx-countdown';
+import { UpdateProfileComponent } from './components/update-profile/update-profile.component';
+import { GaugeModule } from 'angular-gauge';
+import { ChatComponent } from './components/chat/chat.component';
+import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
+import { ServerErrorComponent } from './components/server-error/server-error.component';
+import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
+import { SomethingwentwrongComponent } from './components/somethingwentwrong/somethingwentwrong.component';
 
 @NgModule({
   declarations: [
@@ -61,9 +79,24 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
     TestandtopicComponent,
     AssignmentsComponent,
     McqComponent,
+    CartComponent,
     TopiccomponentComponent,
+    RegisteredCoursesComponent,
+    ContentDisplayComponent,
+    SingleDashboardComponent,
+    ChangePasswordComponent,
+    ForgetPasswordComponent,
+    UpdateProfileComponent,
+    ChatComponent,
+    UnauthorizedComponent,
+    ServerErrorComponent,
+    PagenotfoundComponent,
+    SomethingwentwrongComponent
   ],
   imports: [
+    GaugeModule.forRoot(),
+    CountdownModule,
+    NgZorroAntdModule,
     BrowserAnimationsModule,
     NoopAnimationsModule,
     AceEditorModule,
@@ -74,12 +107,14 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
     HighchartsChartModule,
     GaugeChartModule,
     ChartsModule,
-    ChartModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule
   ],
   providers: [
+    { provide: NZ_I18N, useValue: en_US },
     AuthGuard,
     OppguardGuard,
     AuthenticationServiceService,

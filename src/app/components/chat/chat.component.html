@@ -1,0 +1,48 @@
+<div class="fab-container" (click)="open1()">
+    <span *ngIf="showNew" class="badge badge-danger">New</span>
+    <div class="fab-icon-holder">
+        <i class="fas fa-users">
+        </i>
+    </div>
+</div>
+
+<div class="card fab-container1" *ngIf="show">
+    <div class="card-body" style="height: 350px;width: 450px; overflow-y: auto; background-color: lightblue;">
+        <div class="scroll" *ngFor="let chat of chats">
+            <div class="outgoing_msg" *ngIf="chat.userId==userId">
+                <div class="sent_msg">
+                    <span class="time_date p-0 m-0">{{chat.name}}</span>
+                    <p>{{chat.msg}}</p>
+                </div>
+            </div>
+            <div class="incoming_msg" *ngIf="chat.userId!=userId">
+                <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png"
+                        alt="chat.name"> </div>
+                <div class="received_msg">
+                    <div class="received_withd_msg">
+                        <span class="time_date p-0 m-0"> {{chat.name}}</span>
+                        <p>{{chat.msg}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <div class="panel-footer">
+            <div class="input-group">
+                <input (keydown.enter)="onKeydown($event)" id="btn-input" type="text"
+                    class="form-control input-sm chat_set_height" placeholder="Type your message here..."
+                    tabindex="0" dir="ltr" spellcheck="false" autocomplete="off" autocorrect="off"
+                    autocapitalize="off" contenteditable="true" [(ngModel)]="msg" />
+
+                <span class="input-group-btn p-2" (click)="sendMessage()">
+                    <div style="cursor: pointer;">
+                        <i style="font-size: 25px;" class="fas fa-paper-plane"></i>
+                    </div>
+                    <!-- <button class="btn bt_bg btn-sm" id="btn-chat" (click)="sendMessage()">
+                        Send</button> -->
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

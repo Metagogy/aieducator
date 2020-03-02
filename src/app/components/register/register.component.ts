@@ -16,9 +16,12 @@ export class RegisterComponent implements OnInit {
   email:string;
   password:string;
   rpassword:string;
+  showE:boolean;
 
+  
   ngOnInit() {
   }
+
 
   onUpdateName(event:any){
     this.username=event.target.value;
@@ -32,8 +35,7 @@ export class RegisterComponent implements OnInit {
     this.email=event.target.value;
   }
 
-  onUpdateRPassword(event:any)
-  {
+  onUpdateRPassword(event:any){
     this.rpassword=event.target.value;
   }
 
@@ -41,20 +43,19 @@ export class RegisterComponent implements OnInit {
 
   register(){
     this.spinner.show();
-    console.log(this.email+" "+this.password+" "+this.username);
+    // console.log(this.email+" "+this.password+" "+this.username);
     this.authService.register(this.email,this.password, this.username).subscribe(
       (data)=>{
+        this.showE=false;
         console.log(data)
         this.router.navigate(['login']);
         this.spinner.hide();
       },error=>{
+        this.showE=true;
         console.log(error);
-        alert(error)
+        // alert("Registration failed "+error.statusText);
         this.spinner.hide();
       }
     );
   }
-
-
-
 }

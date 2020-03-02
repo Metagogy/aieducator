@@ -21,20 +21,32 @@ import { AssignmentsComponent } from './components/assignments/assignments.compo
 import { TopiccomponentComponent } from './components/topiccomponent/topiccomponent.component';
 import { AuthGuard } from './guards/auth.guard';
 import { OppguardGuard } from './guards/oppguard.guard';
+import { CartComponent } from './components/cart/cart.component';
+import {RegisteredCoursesComponent} from 'src/app/components/registered-courses/registered-courses.component';
+import {ContentDisplayComponent} from 'src/app/components/content-display/content-display.component';
+import { SingleDashboardComponent } from './components/single-dashboard/single-dashboard.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
+import { UpdateProfileComponent } from './components/update-profile/update-profile.component';
+import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
+import { ServerErrorComponent } from './components/server-error/server-error.component';
+import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
+import { SomethingwentwrongComponent } from './components/somethingwentwrong/somethingwentwrong.component';
 
 const routes: Routes = [
   {path: 'contactus', component: ContactusComponent},
   {path: '', component: HomecomponentComponent},
-  // {path: 'login_home', component: LoggedInHomeComponent},
   {path: 'aboutus', component: AboutusComponent},
-  {path: 'profile', component: ProfileComponent},
+  {path: 'profile', component: ProfileComponent,canActivate:[AuthGuard]},
   {path: 'course', component: CoursecomponentComponent},
   {path: 'login', component: LoginComponent,canActivate:[OppguardGuard]},
   {path: 'register', component: RegisterComponent,canActivate:[OppguardGuard]},
-  {path: 'scourse', component: SinglecourseComponent},
+  // {path: 'scourse', component: SinglecourseComponent},
   {path: 'mcq', component: McqsectionComponent,canActivate:[AuthGuard]},
   {path: 'coursedetails/:id', component: CoursedetailslaptopComponent},
   {path: 'coursecatalog', component: CoursecatalogComponent},
+  {path:'changePassword',component:ChangePasswordComponent,canActivate:[AuthGuard]},
+  // {path: 'dashboard', component: DashboardComponent,canActivate:[AuthGuard]},
   {path: 'dashboard', component: DashboardComponent,canActivate:[AuthGuard]},
   {
     path: 'testandtopic/:id',
@@ -43,10 +55,18 @@ const routes: Routes = [
     children:[
       {path:'MCQ/:chapter_id/:test_id',component:McqComponent,canActivate:[AuthGuard]},
       {path:'assign/:assign_id',component:AssignmentsComponent,canActivate:[AuthGuard]},
-      {path:'topic',component:TopiccomponentComponent,canActivate:[AuthGuard]},
+      {path:':cat/:chap_slno/:topic_slno',component:TopiccomponentComponent,canActivate:[AuthGuard]},
     ]
-}
-  
+  },
+  {path:"cart",component:CartComponent,canActivate:[AuthGuard]},
+  {path:"registeredCourses",component:RegisteredCoursesComponent,canActivate:[AuthGuard]},
+  {path:"contentDisplay/:reg_course_id",component:ContentDisplayComponent,canActivate:[AuthGuard]},
+  {path:"forgotPassword",component:ForgetPasswordComponent,canActivate:[OppguardGuard]},
+  {path:'updateProfile',component:UpdateProfileComponent,canActivate:[AuthGuard]},
+  {path:'unauthorized',component:UnauthorizedComponent},
+  {path:'internalServerError',component:ServerErrorComponent,canActivate:[AuthGuard]},
+  {path:'pagenotFound',component:PagenotfoundComponent,canActivate:[AuthGuard]},
+  {path:'somethingwentwrong',component:SomethingwentwrongComponent}
 ];
 
 @NgModule({

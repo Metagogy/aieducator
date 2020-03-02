@@ -1,3 +1,5 @@
+<ngx-spinner><p style="color:white">Loading...</p></ngx-spinner>
+
 <section class="registration_form">
   <div class="container">
       <div class="row">
@@ -38,8 +40,10 @@
                                           </div>
                                           <input (input)="onUpdateRPassword($event)" class="form-control" placeholder="Repeat password" type="password">
                                       </div> <!-- form-group// -->
-
-                                      <div class="form-group border-1">
+                                      <div>
+                                          <p class="text-danger bold" *ngIf="showE">Registration Failed.</p>
+                                      </div>
+                                      <!-- <div class="form-group border-1">
                                           <div class="container">
                                               <div class="row align-content-around ">
                                                   <span class="mx-auto ">
@@ -68,7 +72,7 @@
                                                   </span>
                                               </div>
                                           </div>
-                                      </div>
+                                      </div> -->
                                       <div class="form-group">
                                           <button (click)="register()" type="submit" class="btn btn-primary btn-block"> Create Account
                                           </button>

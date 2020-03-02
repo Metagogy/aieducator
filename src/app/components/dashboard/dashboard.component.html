@@ -4,158 +4,194 @@
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
 
+<ngx-spinner>
+  <p style="color:white">Loading...</p>
+</ngx-spinner>
 
-<section class="section bg_2 p-0 pt-2 pb-2 pl-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-9">
-        <h4 class="h2 ml-5 text-white"><img width="100" height="100" src="../../../assets/images/avatar.jpg"
-            class="rounded-circle " /><span class="ml-5">Hi
-            <!-- {{request.user.username}},  -->
-            Welcome back.</span>
-          <a href="/profile" class="btn profile-btn btn-sm btn-info-outline"><b><u>Profile</u></b></a></h4>
-      </div>
-      <div class="col-md-3 row" style="color: #020c4d;">
-        <div class="col-md-4 h5  text-center mt-3">
-          <!-- {{regCourses.count}} -->
-          3
-          <br>
-          Courses
+<section *ngIf="!iStaff;else adminComponent">
+  <section class="section bg_2 p-0 pt-2 pb-2 pl-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9">
+          <h4 class="h2 ml-5 text-white"><img width="100" height="100" src="../../../assets/images/avatar.jpg"
+              class="rounded-circle " /><span class="ml-5">Hi
+              <!-- {{request.user.username}},  -->
+              Welcome back.</span>
+            <a href="/profile" class="btn profile-btn btn-sm btn-info-outline"><b><u>Profile</u></b></a></h4>
         </div>
-        <div class="col-md-4 h5  text-center mt-3">
-          <!-- {{rewards}} -->
-          15
-          <br>
-          Rewards
-        </div>
-        <div class="col-md-4 h5  text-center mt-3">
-          1
-          <br>
-          Badges
+        <div class="col-md-3 row" style="color: #020c4d;">
+          <div class="col-md-4 h5  text-center mt-3">
+            <!-- {{regCourses.count}} -->
+            {{length}}
+            <br>
+            Courses
+          </div>
+          <div class="col-md-4 h5  text-center mt-3">
+            {{rewards}}
+            <br>
+            Rewards
+          </div>
+          <div class="col-md-4 h5  text-center mt-3">
+            0
+            <br>
+            Badges
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section>
-  <h2 class="text-secondary m-2"><b>ML Bootcamp</b></h2>
-  <hr>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3">
-        <!-- <figure class="highcharts-figure">
-          <div id="gauge01"></div>
-        </figure> -->
-        <!-- <div class='col-md-4 col-xs-6 col-sm-6'> -->
-          <div id='angleGauge' ></div>
+  <!-- <div class="container">
+ </div> -->
+
+  <div class="container text-center" *ngIf="length != 0">
+    <h3>Your Courses</h3>
+    <button id="course" class="btn btn-lg  btn-outline-primary" style="margin: 2rem;" *ngFor="let item of regCourses"
+      (click)="onCourseSelect(item.course__id,item.user)">{{item.course__name}}</button>
+  </div>
+  <!-- ------------- to be itterated for all registered courses----------------- -->
+  <section style="padding-bottom: 2rem;">
+
+    <div class="container">
+      <h2 class="text-secondary m-2" style="color: #324041;"><b>{{courseName}}</b></h2>
+      <hr style="border-top: 1px double #E67823; size: 10px; margin-top: 0rem; " color="#E67823">
+      <div class="row">
+        <!-- <div class="col-md-4"> 
+          <figure class="highcharts-figure">
+            <div id="gauge01"></div>
+          </figure> -->
+        <div class='col-md-5 col-xs-6 col-sm-6'>
+          <!-- <figure class="highcharts-figure">
+            <div id='performanceGauge' class="chart-container"></div>
+          </figure> -->
+          <!-- <mwl-gauge class="two" [max]="100" [dialStartAngle]="180"
+          [dialEndAngle]="0" [value]='profilePerformance' [animated]="true" [animationDuration]="1">
+          </mwl-gauge> -->
+        <rg-gauge-chart
+          [canvasWidth]="canvasWidth"
+          [needleValue]="needleValue"
+          [centralLabel]="centralLabel"
+          [options]="options"
+          [name]="name"
+          [bottomLabel]="bottomLabel">
+        </rg-gauge-chart>
+          
+        </div>
+
         <!-- </div> -->
-
-      </div>
-      <div class="col-md-8 ml-5">
-        <div class="row">
-          <div class="col-md-10" style=" margin-top: auto;margin-bottom: auto;">
-            <div class="progress" style="width: 100%; border-radius: 30px;">
-              <div class="progress-bar" style="width:50%">50%</div>
+        <div class="col-md-6 ml-5">
+          <div class="row">
+            <div class="col-md-10" style=" margin-top: auto;margin-bottom: auto;">
+              <span>{{progress}}%</span>
+              <div class="progress" style="width: 100%; border-radius: 30px;">
+                <div class="progress-bar" role='progressbar' [style.width.%]="progress"></div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <button class="btn" type="button" (click)="courseResume()"
+                style="background-color: rgb(0, 68, 255);color: white;">Resume</button>
             </div>
           </div>
-          <div class="col-md-2">
-            <button class="btn" type="button" style="background-color: rgb(0, 68, 255);color: white;">Start</button>
+          <div class="mt-3">
+            <h5>knowledge Gap(Topics you should refer again)</h5>
+            <p class="border">
+              <a class="btn btn-outline-default text-primary" (click)="navigateKg(kg.link)"  *ngFor="let kg of knowledgeGap">{{kg.name}}</a>
+            </p>
+            <!-- <div class="col-md-4 ">
+              <div class="card card-body justify-content-center section_bg_2"
+                style="text-align: center;margin-top: 40px;">
+                <span style="line-height: 1rem; color: white;">Projects <br> {{projects}}</span>
+              </div>
+            </div>
+            <div class="col-md-4 ">
+              <div class="card card-body justify-content-center section_bg_2"
+                style="text-align: center;margin-top: 40px;">
+                <span style="line-height: 1rem; color: white;">Quizzes <br> {{quizes}}</span>
+              </div>
+            </div> -->
           </div>
         </div>
-        <div class="row mt-3">
-          <div class="col-md-4 ">
-            <div class="card card-body justify-content-center"
-              style="background-color: rgb(0, 5, 36);color: white;text-align: center;height: 150px;margin-top: 40px;">
-              Rewards <br>{{rewards}}
+      </div>
+
+    <div [hidden]='!isData' class="mt-3">
+      <div class="container text-center mt-4">
+
+        <!-- code to load multiple users graph -->
+
+        <!-- <button class="btn btn-lg  btn-outline-primary" style="margin: 2rem;" (click)="open(groupGraph)">Group
+          Performance</button>
+        <ng-template #groupGraph let-modal>
+          <div class="modal-header">
+            <div *ngIf="timeLeft>0">
+              <p class="modal-title" id="modal-basic-title">Group performance will only be available for :
+                <strong>{{timeLeft}}</strong> sec.</p>
             </div>
           </div>
-          <div class="col-md-4 ">
-            <div class="card card-body justify-content-center"
-              style="background-color: rgb(0, 5, 36);color: white;text-align: center;height: 150px;margin-top: 40px;">
-              Projects <br> 1
+          <div class="modal-body">
+            <div class=" col-md-12 border rounded shadow-3d" style="margin-bottom: 2rem;">
+              <div id="quizGroupGraph"></div>
+            </div>
+            <div class=" col-md-12 border rounded shadow-3d">
+              <div id="problemsGroupGraph"></div>
             </div>
           </div>
-          <div class="col-md-4 ">
-            <div class="card card-body justify-content-center"
-              style="background-color: rgb(0, 5, 36);color: white;text-align: center;height: 150px;margin-top: 40px;">
-              Quizzes <br> {{quizes}}
-            </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark " (click)="modal.close('Save click')">Cancel</button>
           </div>
+        </ng-template> -->
+
+        <div class=" col-md-12 border rounded shadow-3d" style="margin-bottom: 2rem;">
+          <!-- <figure class="highcharts-figure"> -->
+          <div id="quizGraph"></div>
+          <!-- </figure> -->
+        </div>
+        <div class=" col-md-12 border rounded shadow-3d">
+          <!-- <figure class="highcharts-figure"> -->
+          <div id="problemsGraph"></div>
+          <!-- </figure> -->
         </div>
       </div>
     </div>
-  </div>
+    </div>
+  </section>
 </section>
-<hr>
 
-<!-- <figure class="highcharts-figure">
-  <div id="container"></div>
-</figure> -->
+<ng-template #adminComponent class="m-3">
+  <div class="container">
+    <div class="row mt-3 mb-3">
+      <div class="col-md-6 text-primary">
 
-<div class=" col-md-12">
-  <!-- <figure class="highcharts-figure"> -->
-    <div id="container"></div>
-  <!-- </figure> -->
-</div>
-<hr>
-
-<div class=" col-md-12">
-  <!-- <figure class="highcharts-figure"> -->
-    <div id="container1"></div>
-  <!-- </figure> -->
-</div>
-<hr>
-
-<!-- integration code -->
-
-<!-- <div class='col-sm-12 col-md-12 col-lg-12'>
-  <h2 class='text-secondary m-2' id='name'>"+ arrayItem.name +"</h2>
-  <hr>
-  <div class='row'>
-    <div class='col-md-4 col-xs-6 col-sm-6'>
-      <div id='angleGauge' style='height: 250px'></div>
+        <h2>
+          Total Users:{{total_users}}
+        </h2>
+      </div>
+      <div class="col-md-6 text-primary">
+        <h2>
+          Registered Users:{{no_of_registered_users}}
+        </h2>
+      </div>
     </div>
-    <div class='row col-lg-8 col-md-8 col-sm-12' style='font-size:0.75rem '>
-      <div class='col-lg-8 col-md-12'>Progress
-        <div class='progress'>
-          <div class='progress-bar' role='progressbar' style='width:"+arrayItem.percent+"'aria-valuenow='"+arrayItem.percent+"%' aria-valuemin='0' aria-valuemax='100'>"+arrayItem.percent+"%
-          </div>
-        </div>
-      </div>
-      <div class='col-lg-4 col-md-4 col-xs-1 col-sm-1 mt-2'>
-        <a href='"+arrayItem.last_urls[arrayItem.name]+"' class='btn btn-primary btn-sm'>Start <i
-            class='fas fa-arrow-right'></i></a>
-      </div>
-      <div class='col-md-4 col-xs-6 col-sm-6 card-body card-sm'>
-        <div class='text-center bg-primary-3 text-white card-body card'>Rewards<span
-            class='text-white'>"+arrayItem.rewards +"</span>
-        </div>
-      </div>
-      <div class='col-md-4 col-xs-6 col-sm-6 card-body card-sm'>
-        <div class='text-center bg-primary-3 text-white card-body card'>Projects<span class='text-white'>0</span>
-        </div>
-      </div>
-      <div class='col-md-4 col-xs-6 col-sm-6 card-body card-sm'>
-        <div class='text-center bg-primary-3 text-white card-body card'>Quizzes<span
-            class='text-white'>"+arrayItem.quizes+"/"+arrayItem.topics+"</span>
-        </div>
-      </div>
+    <div class="row">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">User Name</th>
+            <th scope="col">User Email</th>
+            <th scope="col">Mobile Number</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of userdetails; let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{user.user__username}}</td>
+            <td>{{user.user__email}}</td>
+            <td>{{user.user__phone_number}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
-  <div id='activeCourseMCQ"+index+"' class='border rounded shadow-3d'></div>
-  <!-- <hr>
-  <div id='activeCoursePS"+index+"' class='border rounded shadow-3d mt-3'></div>
-<!-- </div> 
-</div> -->
-
-<!-- <figure class="highcharts-figure">
-    <div id="container2"></div>
-    <p class="highcharts-description">
-        A basic column chart compares rainfall values between four cities.
-        Tokyo has the overall highest amount of rainfall, followed by New York.
-        The chart is making use of the axis crosshair feature, to highlight
-        months as they are hovered over.
-    </p>
-</figure> -->
+</ng-template>

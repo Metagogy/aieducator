@@ -21,31 +21,25 @@
             "aot": false,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {"glob": "**/*",
+              "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+              "output": "/assets/"}
             ],
             "styles": [
               "src/styles.css",
+              "node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",  
               "./node_modules/font-awesome/css/font-awesome.min.css",  
-              // "./src/app/static/assets/css/loaders/loader-typing.css",
-              // "./src/app/static/assets/css/theme.css",
-              // "./src/app/static/assets/css/style1.css",
-              // "./src/app/static/assets/fonts/Inter-UI-upright.var.woff2",
-              // "./src/app/static/assets/fonts/Inter-UI.var.woff2",
               "./node_modules/aos/dist/aos.css"
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.min.js",  
               "./node_modules/bootstrap/dist/js/bootstrap.min.js",
               "src/assets/js/fontawesomekit.js",
-              // "https://kit.fontawesome.com/4fbe07d7bf.js",
-              // "./src/app/static/assets/js/jquery.min.js",
-              // "./src/app/static/js/angular.min.js",
-              // "./src/app/static/assets/js/popper.min.js",
-              // "./src/app/static/assets/js/bootstrap.js",
-              // "./src/app/static/assets/js/aos.js",
               "./node_modules/aos/dist/aos.js",
-              "src/assets/js/sidenav.js"
+              "src/assets/js/sidenav.js",
+              "node_modules/ace-builds/src-min/theme-eclipse.js"
             ]
           },
           "configurations": {
@@ -68,13 +62,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+                  "maximumWarning": "6mb",
+                  "maximumError": "6mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
+                  "maximumWarning": "1.5mb",
+                  "maximumError": "5mb"
                 }
               ]
             }

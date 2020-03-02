@@ -4,9 +4,9 @@
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCLXjQkJqQdd04zmt1JOsp_uer6L1oWsd1hG4dWX4m9URSenOVqA&s" alt="avatar" style="width: 180px;">  
         </div>
         <div class="col-md-6 p-2" >
-        <h4><b>Priyanka Patil</b></h4><br>
-        <h6><b>priyankapatil@gmail.com</b></h6><br>
-        <a routerLink="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;<b>Update Profile</b></a>
+        <h4><b>{{userName}}</b></h4><br>
+        <h6><b>{{userMail}}</b></h6><br>
+        <a routerLink="/updateProfile"><i  class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;<b>Update Profile</b></a>
         </div>
         <div class="col-md-2" style="text-align: center;">
             <button type="button" name="dashboard" class="btn btn-primary p-1 mb-4" style="border-radius: 5px;float: left;width: 200px;height: 45px;" id="button" ><a routerLink="/dashboard">Go To Dashboard</a></button><br>
@@ -23,7 +23,6 @@
                     <div class="panel-heading" role="tab" id="headingOne">
                         <h4 class="panel-title">
                             <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="color:black">
-                                
                                Courses Registered
                               <i class="more-less fa fa-plus" style="color: black; "></i>
                             </a>

@@ -25,7 +25,7 @@ export class CoursecomponentComponent implements OnInit {
     this.service.fetchCourses().subscribe(res=>{
       this.courses=res["courses"];
       this.errorStatus=false;
-      console.log(this.courses)
+      // console.log("The response is",this.courses)
       this.spinner.hide();
     },error=>{
       this.errorStatus=true;

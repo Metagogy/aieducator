@@ -1,0 +1,66 @@
+<main class="my-form mx-auto mt-3 mb-3">
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Update Profile</div>
+                    <div class="card-body">
+                        <form name="my-form">
+                            <div class="form-group row">
+                                <label for="first_name" class="col-md-4 col-form-label text-md-right">First Name</label>
+                                <div class="col-md-6">
+                                    <input [(ngModel)]="firstName" type="text" id="first_name" placeholder="First Name" class="form-control" name="firstName">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="lastName" class="col-md-4 col-form-label text-md-right">Last Name
+                                    Address</label>
+                                <div class="col-md-6">
+                                    <input [(ngModel)]="lastName" type="text" id="lastName" placeholder="Last Name" class="form-control" name="lastName">
+                                </div>
+                            </div>
+
+                            <!-- <div class="form-group row">
+                                <label for="user_name" class="col-md-4 col-form-label text-md-right">User Name</label>
+                                <div class="col-md-6">
+                                    <input [(ngModel)]="fullName" placeholder="User Name" type="text" id="user_name" class="form-control" name="fullName">
+                                </div>
+                            </div> -->
+
+                            <div class="form-group row">
+                                <label for="phone_number" class="col-md-4 col-form-label text-md-right">Phone
+                                    Number</label>
+                                <div class="col-md-6">
+                                    <input [(ngModel)]="phone_number" required name="phone_number" placeholder="Phone Number" type="tel" id="phone_number" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="present_address" class="col-md-4 col-form-label text-md-right">Address</label>
+                                <div class="col-md-6">
+                                    <input [(ngModel)]="address" name="address" placeholder="Address" type="text" id="present_address" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-md-4"></div>
+                                <div class="col-md-6">
+                                    <p class="text-danger" *ngIf="showE">profile Not updated.</p>
+                                </div>
+                            </div>
+
+                    
+                            <div class="row">
+                                <button (click)="updateProfile()" type="submit" class="mx-auto btn btn-primary">
+                                    Update Profile
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>

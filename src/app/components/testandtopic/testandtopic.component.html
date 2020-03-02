@@ -8,17 +8,17 @@
 
 <ng-template #elseBlock>
     <section>
-        <div class="container-fluid ml-3 mt-3 mb-3">
+        <div class="container-fluid mt-3 mb-3">
             <div class="row">
-                <div class="col-sm-4">
-                    <div class="row">
+                <div class="col-sm-3 ml-2" style="height:100vh; overflow-y: scroll;">
+                    <div class="row" >
                         <div class="card p-3 m-1" *ngFor="let chapters of chapters" style="width:100%">
                             <div class="container demo">
                                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                                     <div class="panel-body">
                                         <div class="panel panel-default">
                                             <div class="panel-heading" role="tab" id="headingTwo">
-                                                <h4 class="panel-title">
+                                                <h6 class="panel-title  text-truncate">
                                                     <a class="collapsed" role="button" data-toggle="collapse"
                                                         data-parent="#accordion"
                                                         href="#collapseTopics{{chapters.sl_no}}" aria-expanded="false"
@@ -27,34 +27,33 @@
                                                         <i class="fa fa-plus" style="float:right"
                                                             aria-hidden="true">&nbsp;&nbsp;</i>
                                                     </a>
-                                                </h4>
+                                                </h6>
                                             </div>
                                             <div id="collapseTopics{{chapters.sl_no}}" class="panel-collapse collapse"
                                                 role="tabpanel" aria-labelledby="headingTwo">
                                                 <div *ngFor="let topic of chapters.topic">
                                                     <a type="button"
-                                                        (click)="changeType(chapters.sl_no,topic.sl_no,'topic')">
-                                                        <span style="margin: 3rem; line-height: 3rem;">
+                                                        (click)="changeType(chapters.sl_no,topic.sl_no,'topic')" class="text-truncate text-left btn-block btn btn-outline-info mb-1">
+                                                        <span style="">
                                                             <i class="fa fa-file-text-o"
                                                                 aria-hidden="true">&nbsp;&nbsp;</i>
                                                             {{topic.name}}
                                                         </span>
                                                     </a>
-                                                    <div *ngFor="let test of chapters.test">
+                                                    <div *ngFor="let test of chapters.test" >
                                                         <!-- <a type="button" (click)="changeiFrameSource(topic.src)"> -->
-                                                        <span (click)="changeType(chapters.sl_no,test.sl_no,'test')"
-                                                            style="margin: 3rem; line-height: 3rem;"
-                                                            *ngIf="test.sl_no==(+topic.sl_no)+1">
+                                                        <a (click)="changeType(chapters.sl_no,test.sl_no,'test')"
+                                                            style="cursor: pointer;"
+                                                            *ngIf="test.sl_no==(+topic.sl_no)+1" class="text-truncate text-left btn-block btn btn-outline-info mb-1 ">
                                                             <i class="fas fa-pen" aria-hidden="true">&nbsp;&nbsp;</i>
                                                             {{test.name}}
-                                                        </span>
-                                                        <!-- </a> -->
+                                                        </a>
                                                     </div>
                                                 </div>
                                                 <div *ngFor="let problem of chapters.problem">
                                                     <a type="button"
-                                                        (click)="changeType(chapters.sl_no,problem.id,'assignment')">
-                                                        <span style="margin: 3rem; line-height: 3rem;">
+                                                        (click)="changeType(chapters.sl_no,problem.id,'assignment')" class="text-truncate text-left btn-block btn btn-outline-info mb-1">
+                                                        <span style="">
                                                             <i class="fas fa-bolt" aria-hidden="true">&nbsp;&nbsp;</i>
                                                             {{problem.pblm_id}}
                                                         </span>
@@ -87,3 +86,4 @@
         </div>
     </section>
 </ng-template>
+

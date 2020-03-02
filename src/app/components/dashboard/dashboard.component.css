@@ -1,3 +1,4 @@
+
 .section_bg_2
 {
   background: linear-gradient(to left, #324041,  #3755be);
@@ -9,8 +10,75 @@
   background: linear-gradient(to left,  #ffc107, #E67823);
 }
 
+
 #container {
   height: 400px; 
+}
+
+.highcharts-figure .chart-container {
+	width: 300px;
+	height: 200px;
+	float: left;
+}
+
+.highcharts-figure .chart-container {
+	width: 300px;
+	height: 200px;
+	float: left;
+}
+
+.highcharts-figure, .highcharts-data-table table {
+	width: 600px;
+	margin: 0 auto;
+}
+
+.highcharts-data-table table {
+    font-family: Verdana, sans-serif;
+    border-collapse: collapse;
+    border: 1px solid #EBEBEB;
+    margin: 10px auto;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+.highcharts-data-table caption {
+    padding: 1em 0;
+    font-size: 1.2em;
+    color: #555;
+}
+.highcharts-data-table th {
+	font-weight: 600;
+    padding: 0.5em;
+}
+.highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {
+    padding: 0.5em;
+}
+.highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {
+    background: #f8f8f8;
+}
+.highcharts-data-table tr:hover {
+    background: #f1f7ff;
+}
+
+@media (max-width: 600px) {
+	.highcharts-figure, .highcharts-data-table table {
+		width: 100%;
+	}
+	.highcharts-figure .chart-container {
+		width: 300px;
+		float: none;
+		margin: 0 auto;
+	}
+
+}
+
+div.highcharts-container g.highcharts-tracker > * {
+  fill : transparent;
+}
+
+/* .highcharts-figure, .highcharts-data-table table {
+	width: 600px;
+	margin: 0 auto;
 }
 
 .highcharts-figure, .highcharts-data-table table {
@@ -45,7 +113,7 @@ font-weight: 600;
 }
 .highcharts-data-table tr:hover {
   background: #f1f7ff;
-}
+} */
 
 body {
   background-color: #f0f0f0;
@@ -58,4 +126,57 @@ body {
   overflow: hidden;
   border-radius: 7px;
   background-color: #ffffff;
+}
+
+mwl-gauge {
+  width: 250px;
+  height: 250px;
+  display: block;
+  padding: 10px;
+}
+mwl-gauge > .gauge > .dial {
+  stroke: #eee;
+  stroke-width: 2;
+  fill: rgba(0,0,0,0);
+}
+mwl-gauge > .gauge > .value {
+  stroke: rgb(47, 227, 255);
+  stroke-width: 2;
+  fill: rgba(0,0,0,0);
+}
+mwl-gauge > .gauge > .value-text {
+  fill: rgb(47, 227, 255);
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+
+/* class three of guage style */
+
+
+mwl-gauge.three > .gauge > .dial {
+  stroke: #334455;
+  stroke-width: 2;
+}
+mwl-gauge.three > .gauge > .value {
+  stroke: #C9DE3C;
+  stroke-width: 5;
+}
+mwl-gauge.three > .gauge > .value-text {
+  fill: #C9DE3C;
+}
+
+/* class two guage style for gauge */
+mwl-gauge.two > .gauge > .dial {
+  stroke: #334455;
+  stroke-width: 10;
+}
+mwl-gauge.two > .gauge > .value {
+  stroke: orange;
+  stroke-dasharray: none;
+  stroke-width: 13;
+}
+mwl-gauge.two > .gauge > .value-text {
+  fill: orange;
 }

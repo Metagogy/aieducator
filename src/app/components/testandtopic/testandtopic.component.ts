@@ -22,6 +22,7 @@ export class TestandtopicComponent implements OnInit {
   errorMessage:any;
   id:any;
   count:number=0;
+  cat:any;
 
   constructor(private service:TestandtopicService,private spinner:NgxSpinnerService,private route:ActivatedRoute,private router:Router) { }
 
@@ -30,7 +31,7 @@ export class TestandtopicComponent implements OnInit {
       if(typeFrom=="assignment")
       {
         this.typeOf="assignment";
-        console.log(this.typeOf);
+        // console.log(this.typeOf);
         this.chapterNo=chapterno;
         this.sl_no=type;
         this.router.navigate(['assign',this.sl_no],{relativeTo:this.route});        
@@ -40,15 +41,18 @@ export class TestandtopicComponent implements OnInit {
         this.typeOf="topic";
         this.chapterNo=chapterno;
         this.sl_no=type;
-        this.router.navigate(['topic'],{relativeTo:this.route});
+        // console.log("the type of ",this.cat);
+        // console.log("The chapter no is",this.chapterNo);
+        // console.log("The topic no is",this.sl_no);
+        this.router.navigate([this.cat,this.chapterNo,this.sl_no],{relativeTo:this.route});
       }
       else if(typeFrom=='test')
       {
         this.typeOf="test";
         this.chapterNo=chapterno;
         this.sl_no=type;
-        console.log(this.chapterNo);
-        console.log(this.sl_no);
+        // console.log(this.chapterNo);
+        // console.log(this.sl_no);
         this.router.navigate(['MCQ',this.chapterNo,this.sl_no],{relativeTo:this.route});
       }
   }
@@ -58,17 +62,19 @@ export class TestandtopicComponent implements OnInit {
     this.spinner.show();
     this.response=this.service.getSyllabusFromBackend(this.id).subscribe(res=>{
         this.response=res['data'];
-        // console.log(res);
+        this.cat=res["cat"];
+        console.log(res);
+      //  console.log("The Navigation Data is "+this.response);
         if(localStorage.getItem('syllabus')==null)
         {
           localStorage.setItem("syllabus",this.response);
-          console.log("Syllabus is stored in localstorage");
+          // console.log("Syllabus is stored in localstorage");
         }
         this.chapters=this.response;
-        console.log(this.chapters);
+        // console.log(this.chapters);
         this.spinner.hide();
     },error=>{
-        console.log("An error as occured while fetching syllabus");
+        // console.log("An error as occured while fetching syllabus");
         this.spinner.hide();
       });
   }

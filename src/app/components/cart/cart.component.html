@@ -1,0 +1,58 @@
+
+<ngx-spinner><p style="color:white">Loading...</p></ngx-spinner>
+
+<section class="section_bg">
+    <div class="container text-white">
+        <h1 style="line-height: 7rem;">Cart</h1>
+    </div>
+</section>
+
+<h5 *ngIf="!isAvailable" class="m-5" style="text-align: center">No courses registered &nbsp;&nbsp;<a routerLink='/course'
+    class="btn btn-outline btn-info box-shadow-cus">Register Now</a></h5>
+
+<section class="m-3" *ngIf="isAvailable">
+    <div class="container ">
+        <h4>Courses in Cart</h4>
+        <hr>
+        <div class="col-md-12 card box-shadow-cus m-3" *ngFor="let cart of response">
+            <div class="row">
+                <div class="col-md-2">
+                    <img src="/assets/images/Python.png" height="100px" width="100px" alt="course image">
+                </div>
+                <div class="col-md-6">
+                    <h5>{{cart.course__name}}</h5>
+                    <p>{{cart.course__what}}</p>
+                </div>
+                <div class="col-md-2">
+
+                    <h5><i class="fas fa-rupee-sign m-3" style="font-size: 23px;">&nbsp;</i>{{cart.course__price}}</h5>
+                    <!-- <span style="margin-left: 2rem;">
+                        <div>
+                            <h6><del>₹ 7,440</del></h6>
+                            <h6 style="color: rgb(134, 25, 25);">26% off</h6>
+                        </div>
+                    </span> -->
+                </div>
+                <div class="col-md-2 mx-auto m-2">
+                    <button type="button" class="btn btn-lg mx-auto btn-outline-primary" (click)="remove(cart.id)" style="width: 100%;"><span
+                            class="btn-text" style="font-weight: bold;">Remove</span></button>
+                        <br>
+                    <button type="button" class="btn m-3 btn-lg mx-auto btn-outline-primary" (click)="checkout(cart.id)" style="width: 100%;"><span
+                            class="btn-text" style="font-weight: bold;">Checkout</span></button>
+                    <!-- <a type="button" href="#">Remove</a><br>
+                    <a type="button" href="#">Checkout</a> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- <section>
+    <div class="container ">
+        <h4>Recomended Courses</h4>
+        <hr>
+        <div class="text-center">
+            <span>Sorry, No Recomended course now</span>
+        </div>
+    </div>
+</section> -->

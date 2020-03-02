@@ -21,30 +21,50 @@ export class CoursedetailslaptopComponent implements OnInit {
 
   onChapterSelected(id:any,sl_no:any,topicNo:any)
   {
-    console.log("onChapter selected id clicked");
+    // console.log("onChapter selected id clicked");
     // this.router.navigate(['testandtopic',id,sl_no,topicNo])
   }
+
+  addToCart(){
+    this.service.addToCart(this.id).subscribe(res=>{
+      // console.log("The response from added to cart is")  
+      // console.log(res);
+      if(res["Success"]=="True")
+      {
+        this.router.navigate(['cart']);
+      }else{
+        // console.log("adding to cart is failed")
+      }
+    },error=>{
+        // console.log("You have caught an error while adding the course to cart");
+        console.log(error);
+    });
+    // console.log("Add to cart has been clicked");      
+  }
+
 
   constructor(private route: ActivatedRoute, private service: DataServiceService, private http: HttpClient,private spinner:NgxSpinnerService,private router:Router) { }
 
   ngOnInit() {
     this.spinner.show();
     this.id = this.route.snapshot.paramMap.get('id');
-    console.log(this.id);
+    // console.log(this.id);
     this.data = this.service.getCoursesData(this.id).subscribe(data => {
       this.data = data["course"];
       this.chapters = this.data["chapters"];
-      console.log('url output =', this.data);
-      console.log('chapter output =', this.chapters);
+      // console.log('url output =', this.data);
+      // console.log('chapter output =', this.chapters);
       this.spinner.hide();
       this.errorStatus=false;
     },error=>{
       this.errorStatus=true;
       this.errorMessage=error.message;
-      console.log("Error has been occured");
+      console.log(error);
+      // console.log("Error has been occured");
       this.spinner.hide();
     });
 
+    
     
 
     // if (this.id == 1) {

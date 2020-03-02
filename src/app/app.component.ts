@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import * as AOS from 'aos';
 import {AuthseviceService} from 'src/app/services/authsevice.service';
 import {Router} from '@angular/router';
+import { InteractionserviceService } from './services/interactionservice.service';
+
 
 @Component({
   selector: 'app-root',
@@ -12,14 +14,22 @@ import {Router} from '@angular/router';
 export class AppComponent implements OnInit{
   title = 'metagogyai';
   loginStatus:boolean;
-  
-  constructor(private service:AuthseviceService,private router:Router){}
+  chats:any;
+
+  constructor(private service:AuthseviceService,private router:Router,private interactionServie:InteractionserviceService){
+  }
+
   logout1(){
     this.service.logout();
-    window.location.reload();
+    this.interactionServie.sendToParent(false);
   }
   
   ngOnInit(){
+    this.interactionServie.loginStatus$.subscribe(msg=>{
+      // console.log(msg);
+      this.loginStatus=msg;
+    })
+    
     if(this.service.isUserLoggedIn())
     {
       this.loginStatus=true;
@@ -29,4 +39,5 @@ export class AppComponent implements OnInit{
     }
     AOS.init();
   }
+
 }

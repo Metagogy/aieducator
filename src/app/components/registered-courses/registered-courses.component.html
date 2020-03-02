@@ -1,0 +1,84 @@
+<ngx-spinner><p style="color:white">Loading...</p></ngx-spinner>
+
+<section class="section details-page">
+    <div class="details-page">
+        <div class="section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h1 class="title-cus">Registered Courses</h1>
+                    </div>
+                </div>
+            </div><!-- /.container -->
+        </div><!-- /.section-padding -->
+    </div><!-- /.overlay -->
+</section><!-- /.page-name -->
+<div class="container">
+    <br>
+    <h3 style="text-align: center">Courses</h3>
+    <!-- {% if not courses %} -->
+    <h5 *ngIf="!isAvailable" style="text-align: center">No courses registered &nbsp;&nbsp;<a href="/courses"
+            class="btn btn-outline btn-info box-shadow-cus">Register Now</a></h5>
+    <!-- {% else %} -->
+    <div class="row" *ngIf="isAvailable">
+        <div class="col-lg-4" *ngFor="let course of response">
+            <a href="/contentsDisplay/course/{{course.id}}" routerLink="/contentDisplay/{{course.id}}" style="text-decoration: none;">
+                <div class="card shadow-lg border-5  mt-5">
+                    <div><img src="/assets/images/Python.png" alt="Item Thumbnail"
+                            class="img-center img-fluid"></div><!-- /.item-thumb -->
+                    <div class="item-details-cus p-4 l-5">
+                        <h6 class=""><strong>{{course.course__name}}</strong></h6><!-- /.item-title -->
+                        <span class="instructor">Duration : {{course.course__duration}} days</span>
+                    </div><!-- /.item-details -->
+                </div><!-- /.item -->
+            </a>
+        </div>
+    </div>
+    <br>
+    <hr>
+    <!-- <h3 style="text-align: center">Bundles</h3>
+    {% if not bundles %}
+    <h5 style="text-align: center">No Bundles registered &nbsp;&nbsp;<a href="/courses"
+            class="btn btn-outline btn-info box-shadow-cus">Register Now</a></h5>
+    {% else %}
+    <div class="row">
+        <br>
+        {% for bundle in bundles %}
+        <div class="col-lg-4 ">
+            {% if bundle.pretest_score %}
+            <a href="/contentsDisplay/bundle/{{bundle.id}}">
+                <div class="card shadow-lg border-5  mt-5">
+                    <div><img src="/static/images/{{bundle.bundle.cat}}.png" alt="Item Thumbnail"
+                            class="img-center img-fluid"></div>
+                            /.item-thumb
+                    <div class="item-details-cus p-4 l-5">
+                        <h6 class=""><strong>{{bundle.bundle.name}}</strong></h6>
+                        /.item-title
+                        <span class="instructor">Duration : {{bundle.bundle.duration}} days</span>
+                    </div>
+                    /.item-details
+                </div>/.item
+            </a>
+            {% else %}
+            <a href="/pretest_landing/bundle/{{bundles.id}}">
+                <div class="card shadow-lg border-5  mt-5">
+                    <div><img src="/static/images/{{bundle.bundle.cat}}.png" alt="Item Thumbnail"
+                            class="img-center img-fluid"></div>
+                            /.item-thumb
+                    <div class="item-details-cus p-4 l-5">
+                        <h6 class=""><strong>{{bundle.bundle.name}}</strong></h6>
+                        /.item-title
+                        <span class="instructor">Duration : {{bundle.bundle.duration}} days</span>
+                    </div>
+                    /.item-details
+                </div>
+                /.item
+            </a>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <br> -->
+</div>
+<!-- {% endblock %} -->

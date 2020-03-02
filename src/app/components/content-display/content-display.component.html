@@ -1,0 +1,66 @@
+<ngx-spinner><p style="color:white">Loading...</p></ngx-spinner>
+
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="display-5">
+                {{userName}}
+            </h2>
+            <h5 class="display-5">
+                Welcome {{user}} !
+            </h5>
+            <div class="progress float-right">
+                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+                    style="width: 0%;"></div>
+            </div>
+            <hr>
+            <div class="course-single-details">
+                <h4>Course description</h4>
+                <h5>
+                    Why this Course ?
+                </h5>
+                <p>
+                    {{what}}
+                </p>
+                <h5>
+                    <strong>
+                        What you Learn ?
+                    </strong>
+                </h5>
+                <p>
+                    {{why}}
+                </p>
+                <h4 class="title">Curriculum for this Course</h4>
+                <div class="row m-3">
+                    <div class="container demo">
+                        <div class="panel-group" id="accordion"  role="tablist" aria-multiselectable="true">
+                            <div class="panel-body" *ngFor="let chapter of chapters">
+                              <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingTwo">
+                                  <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                                      href="#collapseTopics{{chapter.sl_no}}" aria-expanded="false" aria-controls="collapsePartOne">
+                                      <i class="fa fa-plus" aria-hidden="true">&nbsp;&nbsp;</i>
+                                      <a >{{chapter.chapter}}</a>
+                                    </a>
+                                  </h4>
+                                </div>
+                                <div id="collapseTopics{{chapter.sl_no}}" class="panel-collapse collapse" role="tabpanel"
+                                  aria-labelledby="headingTwo">
+                                  <div *ngFor="let topic of chapter.topics">
+                                    <span  (click)="onChapterSelected(chapter.sl_no,topic.sl_no)" style="margin: 3rem; line-height: 3rem;cursor: pointer;">
+                                    <i class="fa fa-file-text-o" aria-hidden="true">&nbsp;&nbsp;</i>
+                                    {{topic.topic}}
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>

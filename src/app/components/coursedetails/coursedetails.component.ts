@@ -16,12 +16,12 @@ export class CoursedetailsComponent implements OnInit {
   onResize(event: any) {
   this.innerWidth = window.innerWidth;
   // alert('The innerWidth is changed:');
-  console.log(this.innerWidth);
+  // console.log(this.innerWidth);
 }
 
   ngOnInit() {      
       this.innerWidth = window.innerWidth;
-      console.log(history.state.data);
+      // console.log(history.state.data);
     }
 
 }
