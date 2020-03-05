@@ -42,7 +42,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent,canActivate:[OppguardGuard]},
   {path: 'register', component: RegisterComponent,canActivate:[OppguardGuard]},
   // {path: 'scourse', component: SinglecourseComponent},
-  {path: 'mcq', component: McqsectionComponent,canActivate:[AuthGuard]},
+  // {path: 'mcq', component: McqsectionComponent,canActivate:[AuthGuard]},
   {path: 'coursedetails/:id', component: CoursedetailslaptopComponent},
   {path: 'coursecatalog', component: CoursecatalogComponent},
   {path:'changePassword',component:ChangePasswordComponent,canActivate:[AuthGuard]},

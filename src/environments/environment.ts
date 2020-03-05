@@ -9,8 +9,8 @@ export const environment = {
     messagingSenderId: "561115920358",
     appId: "1:561115920358:web:02857a9b5a28e8679e0827",
     measurementId: "G-KW8BLX1YRN"
-  },
-  url:"http://192.168.1.176:9000/"
+  },    
+  url:"http://192.168.0.123:9000/"
   // url:"http://157.245.104.229/"
 };  
 

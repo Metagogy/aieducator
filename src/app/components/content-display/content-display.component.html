@@ -35,24 +35,26 @@
                 <div class="row m-3">
                     <div class="container demo">
                         <div class="panel-group" id="accordion"  role="tablist" aria-multiselectable="true">
-                            <div class="panel-body" *ngFor="let chapter of chapters">
+                            <div class="panel-body" *ngFor="let chapter of chapters;let chapter_index=index">
                               <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="headingTwo">
                                   <h4 class="panel-title">
                                     <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
                                       href="#collapseTopics{{chapter.sl_no}}" aria-expanded="false" aria-controls="collapsePartOne">
                                       <i class="fa fa-plus" aria-hidden="true">&nbsp;&nbsp;</i>
-                                      <a >{{chapter.chapter}}</a>
+                                      <a >{{chapter.Chapter}}</a>
                                     </a>
                                   </h4>
                                 </div>
                                 <div id="collapseTopics{{chapter.sl_no}}" class="panel-collapse collapse" role="tabpanel"
                                   aria-labelledby="headingTwo">
-                                  <div *ngFor="let topic of chapter.topics">
-                                    <span  (click)="onChapterSelected(chapter.sl_no,topic.sl_no)" style="margin: 3rem; line-height: 3rem;cursor: pointer;">
+                                  <div *ngFor="let topic of chapter.topic;let topic_index=index">
+                                    <span  (click)="onChapterSelected(chapter.sl_no,topic.sl_no,chapter_index,topic_index)" style="margin: 3rem; line-height: 3rem;cursor: pointer;">
                                     <i class="fa fa-file-text-o" aria-hidden="true">&nbsp;&nbsp;</i>
-                                    {{topic.topic}}
-                                    </span>
+                                    {{topic.name}}
+                                    <i *ngIf="topic.is_read" class="fas fa-check"></i>
+                                  </span>
+
                                   </div>
                                 </div>
                               </div>

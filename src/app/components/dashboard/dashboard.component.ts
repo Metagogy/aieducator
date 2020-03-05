@@ -135,7 +135,6 @@ export class DashboardComponent implements OnInit {
         this.service.getDashBoardData(courseId, userId).subscribe(res => {
             console.log("res: ", res);
             this.finalDataList = res["final_data_list"][0];
-            // console.log("final data list : ", this.finalDataList);
             this.needleValue = res['angle'];
             this.bottomLabel = res['angle'];
             this.spinner.hide();
@@ -153,7 +152,6 @@ export class DashboardComponent implements OnInit {
                 this.chapters = this.finalAssignData["chapters"];
                 this.assignData = this.finalAssignData["assignment_data"];
                 this.courseName = this.finalDataList["course__name"];
-                // console.log('resume url:', this.resumeURL)
                 this.isData = true;
                 
                 // this.loadPerformanceGuage();
